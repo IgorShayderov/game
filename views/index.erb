@@ -14,51 +14,63 @@
 </div> 
 
 <br/>
-<br/>
-<br/>
+<br>
+<br>
 
-<div>
-<form method="post" action="/combat">
-    <button type="submit">Start fight</button>
-</form>
- <br>
-
-<form method="post" action="/shop">
-    <button type="submit">Armory shop</button>
-     <table  id="inventory" cellpadding="0" cellspacing="0" border="0">
+<table  id="inventory" cellpadding="0" cellspacing="0" border="0">
    <tr>
     <th></th>
     <th id="char_info">Character info</th>
     <th></th>
    </tr>
    <tr>
-    <td>Ячейка 3</td>
-    <td>Ячейка 4</td>
-    <th>Ячейка 2</th>
+    <td><%= @necklace %></td>
+    <td><%= @helmet %></td>
+    <th><%= @ring %></th>
   </tr>
   <tr>
-  	<td>Ячейка 5</td>
-  	<td>Ячейка 6</td>
-  	<th>Ячейка 2</th>
+  	<td><%= @main_hand %></td>
+  	<td><%= @breastplate %></td>
+  	<th><%= @second_hand %></th>
   </tr>
    <tr>
-    <th>Ячейка 1</th>
-    <th>Ячейка 2</th>
-    <th>Ячейка 3</th>
+    <th><%= @bracers %></th>
+    <th><%= @leggins %></th>
+    <th><%= @shoes %></th>
    </tr>
  </table>
+
+<div class="form-group">
+<label></label>
+<input name="login" type="text" class="form-control" placeholder="Your login">
+<div>
+
+<div class="form-group">
+<label></label>
+<input name="password" type="text" class="form-control" placeholder="Your password">
+<div>
+
+<br>
+<form method="post" action="/login">
+    <button type="submit">Log in</button>
 </form> <br>
 
-<form method="post" action="/futher">
-    <button type="submit">Go futher</button>
+<br>
+<div>
+<form method="post" action="/combat">
+    <button type="submit">Start fight</button>
+    </form>
+ <br>
+
+
+<form method="post" action="/shop">
+    <button type="submit">Shop</button>
 </form> <br>
 
-<form method="post" action="/map">
-    <button type="submit">Map</button>
+<form method="post" action="/statistics">
+    <button type="submit">Statistics</button>
 </form> <br>
 
-<form method="get" action="/save">
-    <button type="submit">Save</button>
 </form> <br>
 </div>
 

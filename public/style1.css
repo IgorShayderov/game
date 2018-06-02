@@ -24,6 +24,10 @@ button{
     font-family: arial;
 }
 
+.form-group{
+	line-height:0.85;
+}
+
 #char_info{
 	color: yellow;
 	font-size:150%;
@@ -35,4 +39,5 @@ button{
 	float:right;
 	font-size:150%;
 	text-align:center;
+	margin-right: 60px;
 }
