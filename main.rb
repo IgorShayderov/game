@@ -11,3 +11,4 @@ post '/login' do
 	@password = params[:password]
 	erb :login
 	end
+	

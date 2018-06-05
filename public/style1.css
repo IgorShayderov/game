@@ -3,7 +3,6 @@ body{
     background-repeat:no-repeat;
     background-size:cover;
     background-image: url('/images/main.jpg');
-    background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
 }
@@ -38,6 +37,26 @@ button{
 	color: yellow;
 	float:right;
 	font-size:150%;
-	text-align:center;
+	text-align: center;
 	margin-right: 60px;
+}
+
+#command_chat{
+	display: inline;
+	text-align: center;
+	float: right;
+	margin-right: 100px;
+	color: black;
+	font-size: 150%;
+	background-color: white;
+	border-color: black;
+	border-collapse: separate;
+}
+
+#map{
+	background-image: url('/images/map.jpg');
+	background-repeat:no-repeat;
+    background-position: right top;
+    background-size: 900px 400px;
+    background-attachment: scroll;
 }
