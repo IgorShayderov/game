@@ -1,0 +1,7 @@
+---
+Igor: !ruby/object:Account
+  login: Igor
+  password: Shayderov
+'1': !ruby/object:Account
+  login: '1'
+  password: '2'
