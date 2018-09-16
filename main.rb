@@ -42,8 +42,12 @@ get '/shop' do
 			erb :shop
 	end
 
-get '/character' do
+post '/character' do
+	@player = player
+			erb :character
+end
 
+get '/character' do
 			erb :character
 end
 
@@ -52,7 +56,8 @@ post '/login' do
 	#@account.login = params[:login]
 	#@account.password = params[:password]
 	#@store.save(@account)
-	redirect '/'
+	#redirect '/'
+	erb :login
 
 end
 	

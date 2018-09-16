@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<title>Game</title>
@@ -9,60 +9,64 @@
 
 <body>
 
-<div id="header">
+<div>
 <h1>Welcome to the Game!</h1>
 </div> 
 
-<br/>
-<br>
-<br>
+<table id="interface" border="1" cellpadding="0" cellspacing="0" align="left">
 
-<table id="command_chat" border="1" cellpadding="0" cellspacing="0">
 <tr>
-<td id="map" width="900" height="400" vertical-align="top"></td>
+<td class="row1">
+	<form method="post" action="/login">
+	<label><font color="white">Your login:</font></label><br>
+	<input name="login" type="text" class="form-control">
+	
+
+	<label><font color="white">Your password:</font></label>
+	<input name="password" type="password" class="form-control"><br><br>
+ 	<button type="submit">Log in</button></form> 
+</td>
+<td rowspan="5" id="map" width="75%" height="600" vertical-align="top"></td>
+<td style="width: 300px;"></td>
 </tr>
+
 <tr>
-<td name="dialog_window" id="dialog_window" width="900" height="30" align="left">
-<input name="chat" type="text" placeholder="Chat"><td>
-</tr>
-</table>
-
-<div class="form-group">
-<form method="post" action="/login">
-
-<label></label>
-<input name="login" type="text" class="form-control" placeholder="Your login">
-<br>
-
-<label></label>
-<input name="password" type="text" class="form-control" placeholder="Your password">
-
-<br>
-<br>
-    <button type="submit">Log in</button>
-</form> 
-<div>
-
-<br>
-<div>
-<form method="get" action="/combat">
+<td class="row1">
+	<form method="get" action="/combat">
     <button type="submit">Start fight</button>
-    </form>
- <br>
+    </form></td>
+<td></td>
+</tr>
 
-
-<form method="get" action="/shop">
+<tr>
+<td class="row1">
+	<form method="get" action="/shop">
     <button type="submit">Shop</button>
-</form> <br>
+</form> 
+</td>
+<td></td>
+</tr>
 
+<tr>
+<td  class="row1">
 <form method="get" action="/character">
     <button type="submit">Character</button>
-</form> <br>
+</form> 
+</td>
+<td></td>
+<td></td>
+</tr>
 
-</form> <br>
-</div>
+<tr>
+<td style="height: 350px;"></td><td></td><td></td>
+</tr>
 
-
-<br/>
+<tr>
+<td></td>
+<td id="dialog_window" align="left">
+<input name="chat" type="text" placeholder="Chat"></td>
+<td></td>
+</tr>
 
 </body>
+</html>
