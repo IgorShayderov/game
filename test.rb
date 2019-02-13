@@ -1,5 +1,5 @@
-require_relative 'Item'
-require_relative 'Player'
+require_relative 'item'
+require_relative 'player'
 require 'minitest/autorun'
 
 class TestLocation < Minitest::Test

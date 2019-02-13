@@ -1,0 +1,54 @@
+body{
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-image: url('/images/character.jpg');
+    background-position: left top;
+    background-attachment: fixed;
+    font-size: 16pt;
+}
+.info{
+	vertical-align: top;
+	text-align: left;
+	padding: 10px;
+}
+.info input{
+	font-size: 14pt;
+}
+#inventory caption{
+	color: black;
+	font-size:150%;
+	font-weight: bold;
+}
+#inventory{
+	width: 80%;
+  	height: 500px;
+	display: inline;
+	color: black;
+	font-size:120%;
+	text-align: center;
+	border-collapse: collapse;
+}
+#inventory td{
+	border: 3px solid black;
+	padding: 10px;	
+	height: 150px;
+	width: 150px;
+}
+#stats {
+	border: 3px solid black;
+}
+#backpack{
+	width: 80%;
+  	height: 500px;
+	display: inline;
+	color: black;
+	font-size:120%;
+	text-align: center;
+	border-collapse: collapse;
+}
+#backpack td{
+	border: 3px solid black;
+	padding: 10px;	
+	height: 150px;
+	width: 150px;	
+}

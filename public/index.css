@@ -21,16 +21,14 @@ button{
     background-color: yellow;
     font-family: arial;
     display: inline;
+    margin: 10px;
+    
 }
 
 label{
 	display: inline;
 }
 
-.row1{
-	text-align: left;
-	padding: 10px;
-}
 
 .form-group{
 	line-height:0.85;
@@ -51,7 +49,7 @@ border: 5px solid white;
 }
 
 #map{
-	/*background: url('/images/map.jpg')1000px 500px no-repeat;*/
-    background-position: left top;
-    background-attachment: scroll;
+float: right;
+width: 950px;
+margin-right: 500px;
 }

@@ -1,4 +1,4 @@
-require_relative 'WildAnimal'
+require_relative 'wildanimal'
 
 class Player
 	
@@ -8,15 +8,15 @@ class Player
 
 	attr_accessor :name, :exp, :exp_to_lvlup, :gold, :level
 
-	attr_accessor :inventory, :stats, :attributes 
+	attr_accessor :inventory, :stats, :attributes, :free_attributes, :enemies_killed
 
 	def initialize(name)
 # 	slot1	    	slot2   	slot3   		slot4		   slot5   		slot6         		slot7	   slot8   		   slot9
 	@inventory = {
-	:necklace => nil, :helmet => nil, :ring => nil, :weapon => nil, :chest => nil, :shield => nil, 
+	:necklace => nil, :helmet => nil, :ring => nil, :weapon => nil, :armor => nil, :shield => nil, 
 	:gloves => nil, :leggins => nil, :boots => nil
 	}
-	@stats = { hitpoints: 100, damage: 10, defence: 0, magic_defence: 0
+	@stats = { hitpoints: 100, damage: 10, defence: 0, magic_defence: 0, crit_dmg: 2, crit_chance: 5
 	}
 	@attributes = {
 		strength: 10,
@@ -30,6 +30,7 @@ class Player
 		@gold = 0
 		@level = 1 
 		@free_attributes = 0
+		@enemies_killed = 0
 	end
 
 	def equip_item(item)
@@ -91,29 +92,32 @@ class Player
 
 	def sudden_attack
 		animal = WildAnimal.rand_from_bestiary
-		puts "You got attacked by #{animal[:name]}!"
+		puts "You got attacked by #{animal.stats[:name]}!"
 		fight(animal)
+		raise
+	  	rescue => error
+	  		puts error.message
 	end
 
-	def fight(name) 
+	def fight(name)
 		temporary_hp_player = self.stats[:hitpoints]
-		temporary_hp_enemy = name[:hp]
+		temporary_hp_enemy = name.stats[:hitpoints]
 		p "You got #{self.exp} experience."
 		while true			
 			#sleep(rand(3..5))
-			your_hit = damage(self.stats[:damage], name[:def])
+			your_hit = damage(self, name)
 			temporary_hp_enemy -= your_hit
 			#sleep(rand(3..5))
-			puts "You hit for #{your_hit} damage. #{name[:name]} got #{temporary_hp_enemy}hp left."
-			enemy_hit = damage(name[:dmg], self.stats[:defence]) if temporary_hp_enemy > 0
+			puts "You hit for #{your_hit} damage. #{name.stats[:name]} got #{temporary_hp_enemy}hp left."
+			enemy_hit = damage(name, self) if temporary_hp_enemy > 0
 			temporary_hp_player -= enemy_hit if temporary_hp_enemy > 0
-			puts "#{name[:name]} hit for #{enemy_hit} damage. You got #{temporary_hp_player}hp left." if temporary_hp_enemy > 0
+			puts "#{name.stats[:name]} hit for #{enemy_hit} damage. You got #{temporary_hp_player}hp left." if temporary_hp_enemy > 0
 			break if temporary_hp_player <= 0 || temporary_hp_enemy <= 0
 		end
 			if temporary_hp_player > 0 && temporary_hp_enemy <= 0
-				gold_for_win = par_gained(name[:gold])
+				gold_for_win = par_gained(name.stats[:gold])
 				self.gold += gold_for_win
-				exp_for_win = par_gained(name[:exp])
+				exp_for_win = par_gained(name.stats[:exp])
 				self.exp += exp_for_win
 				puts "You earned #{gold_for_win} gold and #{exp_for_win} experience"
 				self.lvl_up
@@ -128,12 +132,12 @@ class Player
 		return result.to_i
 	end
 
-	def damage(opponent_1_dmg, opponent_2_defence)
-		if rand(100) < 5
-			opponent_1_dmg *= 2
+	def damage(opponent_1, opponent_2) #1st == dmg, 2nd == def
+		if  rand(100) < opponent_1.stats[:crit_chance] || 5
+			opponent_1.stats[:damage] *= opponent_1.stats[:crit_dmg] || 2
 			puts 'Crittical hit!'
 		end
-		result = opponent_1_dmg * rand(0.8..1.4) - opponent_2_defence / 2
+		result = opponent_1.stats[:damage] * rand(0.8..1.4) - opponent_2.stats[:defence] / 2
 		result = 1 if result < 1
 		return result.to_i
 	end
