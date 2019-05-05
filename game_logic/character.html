@@ -1,0 +1,82 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="character.css">
+<title><%= @player.name %></title>
+</head>
+
+<body>
+
+<div>
+<h1>Character <%= @player.name %></h1>
+<table id='character'>
+  <tr><td>
+
+<table  id="inventory">
+  <caption>Character info</caption>
+   <tr>
+    <td>Necklace<%= @necklace %></td>
+    <td>Helmet<%= @helmet %></td>
+    <td>Ring<%= @ring %></td>
+  </tr>
+  <tr>
+  	<td>Weapon<%= @weapon %></td>
+  	<td>Armor<%= @armor %></td>
+  	<td>Shield<%= @shield %></td>
+  </tr>
+   <tr>
+    <td>Bracers<%= @bracers %></td>
+    <td>Leggins<%= @leggins %></td>
+    <td>Shoes<%= @shoes %></td>
+   </tr>
+ </table></td>
+
+  <td class='info'>
+    <strong>Basic information:</strong> <br>
+    Name: <%= @player.name %> <br>
+    Level: <%= @player.level %> <br>
+    Experiece <%= @player.exp %> <br>
+    Experience to lvl up: <%= @player.exp_to_lvlup %> <br>
+    Gold: <%= @player.gold %> <br>
+    Enemies killed: <%= @player.enemies_killed %> <br>
+ </td>
+
+ <td class='info'>
+  <strong>Stats:</strong><br>
+ Hitpoints: <%= @player.stats[:hitpoints] %> <br>
+ Damage: <%= @player.stats[:damage] %> <br>
+ Defence: <%= @player.stats[:defence] %> <br>
+ Magic defence: <%= @player.stats[:magic_defence] %> <br>
+</td>
+
+ <td class='info'><strong>Attributes:</strong><br>
+  <form method="post"><label> Strength: <%= @player.attributes[:strength] %> </label><input type='submit' id='str' value='+'></form>
+  <form method="post"><label> Endurance: <%= @player.attributes[:endurance] %> </label><input type='submit' id='end' value='+'></form>
+  <form method="post"><label> Vitality: <%= @player.attributes[:vitality] %> </label><input type='submit' id='vit' value='+'></form>
+  Free attributes: <%= @player.free_attributes %>
+ </td>
+</tr>
+</table><br>
+<br>
+<table id='slots'>
+<tr>
+    <td>Slot1<%= @Slot1 %></td>
+    <td>Slot2<%= @Slot2 %></td>
+    <td>Slot3<%= @Slot3 %></td>
+    <td>Slot4<%= @Slot4 %></td>
+    <td>Slot5<%= @Slot5 %></td>
+    <td>Slot6<%= @Slot6 %></td>
+    <td>Slot7<%= @Slot7 %></td>
+    <td>Slot8<%= @Slot8 %></td>
+</tr>
+</table>
+
+<hr>
+
+</div>
+<footer>
+  <p><a href='..'>Go back</a></p>
+</footer>
+</body>
+</html>

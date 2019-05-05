@@ -1,0 +1,28 @@
+
+#for_shop{
+	background-color: #9cb0ce;
+	font-size: 16pt;
+	border: 1px black solid;
+}
+
+#for_shop h1{
+	text-align:center;
+}
+
+#for_shop .item{
+	border-collapse: collapse;
+	border: 3px solid black;
+	height: 150px;
+	width: 150px;
+}
+
+#for_shop .description{
+	border-collapse: collapse;
+	border: 3px solid black;
+	width: 450px;
+	text-align: left;
+	vertical-align: top;
+}
+
+#shop{
+}

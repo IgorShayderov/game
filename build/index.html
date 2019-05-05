@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Game</title>
+    <meta charset="utf-8">
+  	<link rel="stylesheet" type="text/css" href="all.css">
+
+</head>
+<body>
+<header>
+<nav id='panel'>
+    <button id='map_button'>World Map</button>
+    <button id='char_button'>Character</button>
+    <button id='shop_button'>Shop</button>
+</nav>
+</header>
+<main>
+  <div id='main'>
+    <img id='map' src='/images/map.jpg' usemap='map' alt='Map of the world'> 
+    <map name="map">
+    <area shape="circle" coords="" alt="Valley of Silence" href="google.com">
+    </map>
+  </div>
+
+  <div id='character' style="display:none">
+<table id='main_info'>
+  <tr><td>
+<table  id="inventory">
+  <caption>Player</caption>
+   <tr>
+    <td title='Necklace'></td>
+    <td title='Helmet'></td>
+    <td title='Ring'></td>
+  </tr>
+  <tr>
+    <td title='Weapon'></td>
+    <td title='Armor'></td>
+    <td title='Shield'></td>
+  </tr>
+   <tr>
+    <td title='Bracers'></td>
+    <td title='Leggins'></td>
+    <td title='Shoes'></td>
+   </tr>
+ </table></td>
+
+  <td class='info'>
+    <strong>Basic information:</strong> <br>
+    Name:<span>Player</span> <br>
+    Level:<span>0</span> <br>
+    Experiece:<span>0</span> <br>
+    Experience to lvl up:<span>1000</span> <br>
+    Gold:<span>0</span><br>
+    Enemies killed:<span>0</span> <br>
+ </td>
+
+ <td class='info'>
+  <strong>Stats:</strong><br>
+  Hitpoints: <span>100</span><br>
+  Damage: <span>10</span> <br>
+  Defence: <span>0</span> <br>
+  Magic defence: <span>0</span> <br>
+</td>
+
+ <td class='info'><strong>Attributes:</strong><br>
+  <label>Strength: <span>10</span></label><input type='submit' id='str' value='+'><br>
+  <label>Endurance: <span>10</span></label><input type='submit' id='end' value='+'><br>
+  <label>Vitality: <span>10</span></label><input type='submit' id='vit' value='+'><br>
+  Free attributes: <span>0</span>
+ </td>
+</tr>
+</table>
+<br>
+<br>
+<table id='slots'>
+<tr>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+</table>
+  </div>
+
+<div id='for_shop' style='display:none;'>
+<table id='shop'>
+  <caption><b>Item list:</b></caption>
+<tr>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription: <br>type,<br> stats,<br> requirement<br></td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+
+</tr>
+
+<tr>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+
+</tr>
+
+<tr>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+
+</tr>
+
+<tr>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+  <td class='item'>Name of thing:</td>
+  <td class='description'>Decription:</td>
+
+</tr>
+
+</table></div>
+</main>
+<footer>
+</footer>
+<script src='all.js'></script>
+</body>
+</html> 
+              
+            
