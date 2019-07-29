@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Game</title>
+    <meta charset="utf-8">
+  	<link rel="stylesheet" type="text/css" href="all.css">
+
+</head>
+<body>
+<header>
+<nav id="panel">
+    <button id="map_button">World Map</button>
+    <button id="char_button">Character</button>
+    <button id="shop_button">Shop</button>
+    <button id="shop_button">Arena</button>
+    <button id="shop_button">Hunt</button>
+    <button id="shop_button">Location</button>
+</nav>
+</header>
+<main>
+
+<div id="main">
+<!--     <img id="map" src="/images/map.jpg" usemap="map" alt="Map of the world"> 
+    <map name="map">
+    <area shape="circle" coords="" alt="Valley of Silence" href="google.com">
+    </map> -->
+  <p id="currentLocation">Current location: <span>Enterance</span></p>
+
+<div id="buttonsContainer">
+  <div id="directionButtons">
+    <button id="travelNorth">travelNorth</button>
+      <div id="eastWest">
+    <button id="travelWest">travelWest</button>
+    <button id="travelEast">travelEast</button>
+      </div>
+    <button id="travelSouth">travelSouth</button>
+  </div>
+  </div>
+</div>
+
+  <div id="character" style="display:none">
+<table id="main_info">
+  <tr><td>
+<table  id="inventory">
+  <caption>Inventory</caption>
+   <tr>
+    <td title="Necklace"></td>
+    <td title="Helmet"></td>
+    <td title="Ring"></td>
+  </tr>
+  <tr>
+    <td title="Weapon"></td>
+    <td title="Armor"></td>
+    <td title="Shield"></td>
+  </tr>
+   <tr>
+    <td title="Bracers"></td>
+    <td title="Leggins"></td>
+    <td title="Shoes"></td>
+   </tr>
+ </table></td>
+
+  <td class="info">
+    <strong>Basic information:</strong> <br>
+    Name:<span dataInfo="name">Hero</span> <br>
+    Level:<span dataInfo="level">0</span> <br>
+    Experiece:<span dataInfo="exp">0</span> <br>
+    Experience to lvl up:<span dataInfo="expTolvlup">1000</span> <br>
+    Gold:<span dataInfo="gold">0</span><br>
+    Enemies killed:<span dataInfo="enemiesKilled">0</span> <br>
+ </td>
+
+ <td class="info">
+  <strong>Stats:</strong><br>
+  Hitpoints: <span dataInfo="hitpoints">100</span><br>
+  Damage: <span dataInfo="damage">5</span> <br>
+  Defence: <span dataInfo="defence">0</span> <br>
+  Magic defence: <span dataInfo="magicDefence">0</span> <br>
+  Crittical damage: <span dataInfo="critDamage">0</span>% <br>
+  Crittical chance: <span dataInfo="critChance">0</span>% <br>
+</td>
+
+ <td class="info"><strong>Attributes:</strong><br>
+  <label>Strength: <span dataAttr="strength">5</span></label><input title="Add attribute" type="submit" id="str" value="+"><br>
+  <label>Endurance: <span dataAttr="endurance">5</span></label><input title="Add attribute" type="submit" id="end" value="+"><br>
+  <label>Vitality: <span dataAttr="vitality">5</span></label><input title="Add attribute" type="submit" id="vit" value="+"><br>
+  Free attributes: <span dataInfo="freeAttributes">0</span>
+ </td>
+</tr>
+</table>
+<br>
+<br>
+<table id="slots">
+<tr>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+</table>
+  </div>
+
+<div id="forShop" style="display:none;">
+<table>
+  <caption>Item list:</caption>
+<tr>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription: <br>type,<br> stats,<br> requirement<br></td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+
+</tr>
+
+<tr>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+
+</tr>
+
+<tr>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+
+</tr>
+
+<tr>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+  <td class="item"><button>BUY</button></td>
+  <td class="description">Decription:</td>
+
+</tr>
+
+</table></div>
+      <div id="systemMessageWindow" title="System messages">
+      <span>System message window.</span>
+      </div>
+</main>
+<footer>
+</footer>
+<script src="all.js"></script>
+</body>
+</html> 
+              
+            
