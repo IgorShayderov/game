@@ -1,0 +1,41 @@
+#forShop{
+	background-color: #9cb0ce;
+	font-size: 16pt;
+	border: 1px black solid;
+}
+#forShop h1{
+	text-align:center;
+}
+#forShop .item{
+	border-collapse: collapse;
+	border: 3px solid black;
+	height: 150px;
+	width: 150px;
+}
+#forShop .description{
+	border-collapse: collapse;
+	border: 3px solid black;
+	width: 450px;
+	text-align: left;
+	vertical-align: top;
+}
+#forShop table caption{
+	color: black;
+	font-size:140%;
+	font-weight: bold;
+}
+#forShop .item button{
+	font-size: small;
+	font-weight: bold;
+	cursor: pointer;	
+}
+#forShop .item button:hover{
+	background-color: black;
+}
+#forShop td.item{
+	background-repeat:no-repeat;
+    background-size:cover;
+    display: flex;
+    align-items: flex-end;
+	justify-content: flex-end;
+}

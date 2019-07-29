@@ -1,11 +1,13 @@
-body{
+#character{
     background-repeat:no-repeat;
     background-size:cover;
-    background-image: url('/images/character.jpg');
-    background-position: left top;
-    background-attachment: fixed;
-    font-size: 16pt;
+    background-image: url('images/character.jpg');
+    font-size: 15pt;
 }
+/*увидеть все границы */
+/*table, td {
+	border: 3px black solid ;important!
+}*/
 .info{
 	vertical-align: top;
 	text-align: left;
@@ -16,7 +18,7 @@ body{
 }
 #inventory caption{
 	color: black;
-	font-size:150%;
+	font-size:140%;
 	font-weight: bold;
 }
 #inventory{
@@ -28,11 +30,11 @@ body{
 	text-align: center;
 	border-collapse: collapse;
 }
-#inventory td{
+#inventory td, #slots td{
 	border: 3px solid black;
 	padding: 10px;	
-	height: 150px;
-	width: 150px;
+	height: 100px;
+	width: 100px;
 }
 #stats {
 	border: 3px solid black;
@@ -51,4 +53,15 @@ body{
 	padding: 10px;	
 	height: 150px;
 	width: 150px;	
+}
+#slots{
+	border-collapse: collapse;
+	margin-top: -32px;
+	margin-left: 3px;
+}
+.info input[value="+"]{
+	cursor: pointer;
+}
+.info input[value="+"]{
+
 }
