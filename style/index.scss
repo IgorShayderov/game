@@ -1,33 +1,33 @@
-/*html{
+html{
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	font-size: 16px;
+	margin: auto;
+
 }
 body{
-	width: 100%;
+	font-size: 16px;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	background-color: black;
+	background-color: #c4dafc;
 }
-header{
-	background-color: red;
-	height: 50px;
+header, footer{
+	margin: -8px;
 }
 main{
-	background-color: blue;
+	width: 100%;
 	flex-grow: 1;
+	margin: -2px -8px auto -8px;
 }
-footer{
-	background-color: white;
-	height: 50px;
-}*/
-h1{
-	font-family:sans-serif;
-	text-align:center;
-	font-size: 250%;
-	color: blue;
+
+nav{
+	display: flex;
+	justify-content: flex-start;
+	border: 1px solid black;
+	background-color: yellow;
+	margin-bottom: 10px;
 }
 button{
 	font-size: 150%;
@@ -40,32 +40,13 @@ button{
     margin: 5px 15px;
     border-radius: 10px;
     font-style: italic;
-}
-nav{
-	display: flex;
-	justify-content: flex-start;
-	border: 1px solid black;
-	background-color: yellow;
-	margin: -8px;
-	margin-bottom: 10px;
-}
-nav button{
-	cursor: pointer;
+    cursor: pointer;
 }
 nav button:first-child{
 	margin-left: 30px;
 }
-nav button:hover{
+button:hover{
 	background-color: black;
-}
-body{
-	background-color: #c4dafc;
-}
-main{
-	margin: -10px -8px auto -8px;
-}
-#main, #for_shop, #character {
-	height: 740px;
 }
 #buttonsContainer{
 	display: flex;
@@ -76,12 +57,6 @@ main{
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
-}
-#directionButtons button{
-	cursor: pointer;
-}
-#directionButtons button:hover{
-	background-color: black;
 }
 #systemMessageWindow{
 	/*white-space: pre;*/

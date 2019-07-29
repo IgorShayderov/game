@@ -3,6 +3,7 @@
     background-size:cover;
     background-image: url('images/character.jpg');
     font-size: 15pt;
+    height: 100%;
 }
 /*увидеть все границы */
 /*table, td {
@@ -22,8 +23,6 @@
 	font-weight: bold;
 }
 #inventory{
-	width: 80%;
-  	height: 500px;
 	display: inline;
 	color: black;
 	font-size:120%;
@@ -40,8 +39,8 @@
 	border: 3px solid black;
 }
 #backpack{
-	width: 80%;
-  	height: 500px;
+	width: 100%;
+  	height: 100%;
 	display: inline;
 	color: black;
 	font-size:120%;

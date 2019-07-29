@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const concat = require('gulp-concat');
 const del = require('del');
 const browserSync = require('browser-sync').create();
-const less = require('gulp-less');
+const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sourcemaps = require('gulp-sourcemaps');
@@ -47,23 +47,22 @@ function js_files(){
 function clean () {
 	return del(['./build/*']);
 }
-
-function less_css (){
-	return gulp.src('./style/*.less')
-	.pipe (less())
+function scss (){
+	return gulp.src('./style/*.scss')
+	.pipe(plumber({
+      errorHandler: function(err) {
+        notify.onError({
+          title: "Ошибка в CSS",
+          message: "<%= error.message %>"
+        })(err);
+      }
+    }))
+    .pipe(sourcemaps.init() )
+	.pipe (sass())
 	.pipe(concat('all.css'))
 	.pipe(gulp.dest('./build'))
-	.pipe(plumber({
-		errorHandler: notify.onError(function(err){
-			return {
-				title: 'Style',
-				message: err.message
-			}
-		})
-	}))
 	.pipe(browserSync.stream());
 }
-
 function watch(){
 	
 	    browserSync.init({
@@ -73,12 +72,11 @@ function watch(){
         }
    		});   		
 	    gulp.watch('./views/*.html', html);
-	    gulp.watch('./style/*.css', style);
+	    gulp.watch('./style/*.scss', scss);
 	    gulp.watch('./game_logic/**/*.js', js_files);
 	    gulp.watch('./*.html', browserSync.reload);
-	    // gulp.watch('./style/*.less', less);
 }
 
-let go = gulp.series(clean, gulp.parallel(html, images, style, js_files), gulp.series(watch));
+let go = gulp.series(clean, gulp.parallel(html, images, scss, js_files), gulp.series(watch));
 gulp.task('go', go);
 
