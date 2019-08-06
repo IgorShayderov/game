@@ -1,66 +1,44 @@
-#character{
+.charWrap{
     background-repeat:no-repeat;
     background-size:cover;
     background-image: url('images/character.jpg');
-    font-size: 15pt;
+    font-size: 1.3rem;
     height: 100%;
-}
-/*увидеть все границы */
-/*table, td {
-	border: 3px black solid ;important!
-}*/
-.info{
-	vertical-align: top;
-	text-align: left;
-	padding: 10px;
-}
-.info input{
-	font-size: 14pt;
-}
-#inventory caption{
-	color: black;
-	font-size:140%;
-	font-weight: bold;
-}
-#inventory{
-	display: inline;
-	color: black;
-	font-size:120%;
-	text-align: center;
-	border-collapse: collapse;
-}
-#inventory td, #slots td{
-	border: 3px solid black;
-	padding: 10px;	
-	height: 100px;
-	width: 100px;
-}
-#stats {
-	border: 3px solid black;
-}
-#backpack{
-	width: 100%;
-  	height: 100%;
-	display: inline;
-	color: black;
-	font-size:120%;
-	text-align: center;
-	border-collapse: collapse;
-}
-#backpack td{
-	border: 3px solid black;
-	padding: 10px;	
-	height: 150px;
-	width: 150px;	
-}
-#slots{
-	border-collapse: collapse;
-	margin-top: -32px;
-	margin-left: 3px;
-}
-.info input[value="+"]{
-	cursor: pointer;
-}
-.info input[value="+"]{
-
+    
+	.charWrap-info{
+		vertical-align: top;
+		text-align: left;
+		padding: 10px;
+	}
+	.charWrap-info input{
+		font-size: 14pt;
+	}
+	.charWrap-inventory caption{
+		color: black;
+		font-size:140%;
+		font-weight: bold;
+	}
+	.charWrap-inventory{
+		display: inline;
+		color: black;
+		text-align: center;
+		border-collapse: collapse;
+	}
+	.charWrap-inventory td, .charWrap-backpack td{
+		border: 3px solid black;
+		padding: 10px;	
+		height: 100px;
+		width: 100px;
+	}
+	.charWrap-stats {
+		border: 3px solid black;
+	}
+	.charWrap-backpack{
+		border-collapse: collapse;
+		margin-top: -32px;
+		margin-left: 3px;
+	}
+	.charWrap-info input[value="+"]{
+		cursor: pointer;
+	}
 }

@@ -9,7 +9,7 @@ let message = function(message){
 }
 //визуально добавляет атрибут персоонажу
 let incrAttribute = function(attribute){
-$(`.info [dataAttr=${attribute}]`).html(function(index, string){
+$(`.charWrap-info [data-attr=${attribute}]`).html(function(index, string){
 let int = parseInt(string);
 return int += 1;
 });
@@ -20,10 +20,10 @@ let renderText = function(DOMelement, text){
 }
 //
 let renderLvlUp = function(lvl, toLvlUp, freeAttributes){
-	renderText(".info [dataInfo=level]", lvl);
-	renderText(".info [dataInfo=toLvlUp]", toLvlUp);
-	renderText(".info [dataInfo=freeAttributes]", freeAttributes);
-	renderText(".info [dataInfo=experience]", 0);
+	renderText(".charWrap-info [data-info=level]", lvl);
+	renderText(".charWrap-info [data-info=toLvlUp]", toLvlUp);
+	renderText(".charWrap-info [data-info=freeAttributes]", freeAttributes);
+	renderText(".charWrap-info [data-info=experience]", 0);
 }
 // gets random number from range
 let rand = function(lowest, highest){

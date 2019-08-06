@@ -30,14 +30,14 @@ const player = (function () {
 	}
 
 	let changeName = function(newName){
-		gameSystem.renderText(".info [dataInfo=name]", newName);
+		gameSystem.renderText(".info [data-info=name]", newName);
 	}	
 // передает все данные в view. Не стал делать в gameSystem т.к. данные инкапсулированы и доступа к ним нет.
 	let renderAll = function(){
 		const extendedObj = {};
 		$.extend(extendedObj, info, attr, stats);
 	$.each(extendedObj, function(key, value){
-		$(`.info [dataInfo=${key}]`).html(value);
+		$(`.info [data-info=${key}]`).html(value);
 	})
 	}
 
@@ -48,25 +48,25 @@ const player = (function () {
 			attr.strength += 1;
 			info.freeAttributes -= 1;
 			stats.damage += DAMAGE_BONUS_PER_STRENGTH;
-			gameSystem.renderText(".info [dataInfo=damage]", stats.damage);
+			gameSystem.renderText(".info [data-info=damage]", stats.damage);
 			gameSystem.incrAttribute("strength");
 			break;
 			case "endurance":
 			attr.endurance += 1;
 			info.freeAttributes -= 1;
 			stats.defence += DEFENCE_BONUS_PER_ENDURANCE;
-			gameSystem.renderText(".info [dataInfo=defence]", stats.defence);
+			gameSystem.renderText(".info [data-info=defence]", stats.defence);
 			gameSystem.incrAttribute("endurance");
 			break;
 			case "vitality":
 			attr.vitality += 1;
 			info.freeAttributes -= 1;
 			stats.hitpoints += HP_BONUS_PER_VITALITY;
-			gameSystem.renderText(".info [dataInfo=hitpoints]", stats.hitpoints);
+			gameSystem.renderText(".info [data-info=hitpoints]", stats.hitpoints);
 			gameSystem.incrAttribute("vitality");			
 			break;
 		}
-			gameSystem.renderText(".info [dataInfo=freeAttributes]", info.freeAttributes);
+			gameSystem.renderText(".info [data-info=freeAttributes]", info.freeAttributes);
 	}
 
 	let equipItem = function(item){

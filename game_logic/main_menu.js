@@ -1,25 +1,36 @@
 window.addEventListener("load", function (){
 	player.renderAll();
 
-	$("#char_button").on("click", (function(event){
-		$('#main').stop(true,true).slideUp(400);
-		$('#forShop').stop(true,true).slideUp(400);
-		$('#character').stop(true,true).slideDown(400);
+	$(".panel-charButton").on("click", (function(event){
+		$(".mainWrap").stop(true,true).slideUp(400);
+		$(".shopWrap").stop(true,true).slideUp(400);
+		$(".charWrap").stop(true,true).slideDown(400);
 	}));
 
-	$("#map_button").on("click", (function(event){
-		$('#character').stop(true,true).slideUp(400);
-		$('#forShop').stop(true,true).slideUp(400);
-		$('#main').stop(true,true).slideDown(400);
+	$(".panel-mapButton").on("click", (function(event){
+		$(".charWrap").stop(true,true).slideUp(400);
+		$(".shopWrap").stop(true,true).slideUp(400);
+		$(".mainWrap").stop(true,true).slideDown(400);
 	}));
 
-	$("#shop_button").on("click", (function(event){
-		$('#main').stop(true,true).slideUp(400);
-		$('#character').stop(true,true).slideUp(400);
-		$('#forShop').stop(true,true).slideDown(400);
+	$(".panel-shopButton").on("click", (function(event){
+		$(".mainWrap").stop(true,true).slideUp(400);
+		$(".charWrap").stop(true,true).slideUp(400);
+		$(".shopWrap").stop(true,true).slideDown(400);
 	}));
 
-	 $(".info").on("click", "input[id]",function(event){
+	$(".panel-menuToggle").on("click", function(){
+		$(".panel-menuWrap").slideToggle(300, function(){
+			if ($(this).css("display") === "none") {
+				$(this).removeAttr("style");
+			}
+		});
+	});
+
+	$(".mainWrap").stop(true,true).slideUp(400);
+	$(".battleWrap").stop(true,true).slideDown(400);
+
+	 $(".charWrap-info").on("click", "input[id]",function(event){
 	 	switch($(event.target).attr("id")){
 	 		case "str":
 	 			player.addAttribute("strength");

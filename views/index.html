@@ -4,45 +4,48 @@
 <head>
 	<title>Game</title>
     <meta charset="utf-8">
-  	<link rel="stylesheet" type="text/css" href="all.css">
+  	<link rel="stylesheet" href="all.css">
 
 </head>
 <body>
 <header>
-<nav id="panel">
-    <button id="map_button">World Map</button>
-    <button id="char_button">Character</button>
-    <button id="shop_button">Shop</button>
-    <button id="shop_button">Arena</button>
-    <button id="shop_button">Hunt</button>
-    <button id="shop_button">Location</button>
+<nav class="panel">
+  <button class="panel-menuToggle">Menu</button>
+  <div class="panel-menuWrap">
+    <button class="panel-mapButton">World Map</button>
+    <button class="panel-charButton">Character</button>
+    <button class="panel-shopButton">Shop</button>
+    <button class="panel-arenaButton">Arena</button>
+    <button class="panel-huntButton">Hunt</button>
+    <button class="panel-locationButton">Location</button>
+  </div>
 </nav>
 </header>
 <main>
 
-<div id="main">
+<div class="mainWrap">
 <!--     <img id="map" src="/images/map.jpg" usemap="map" alt="Map of the world"> 
     <map name="map">
     <area shape="circle" coords="" alt="Valley of Silence" href="google.com">
     </map> -->
-  <p id="currentLocation">Current location: <span>Enterance</span></p>
+  <p id="mainWrap-currentLocation">Current location: <span>Enterance</span></p>
 
-<div id="buttonsContainer">
-  <div id="directionButtons">
-    <button id="travelNorth">travelNorth</button>
-      <div id="eastWest">
-    <button id="travelWest">travelWest</button>
-    <button id="travelEast">travelEast</button>
+<div id="mainWrap-buttonsContainer">
+  <div id="mainWrap-directionButtons">
+    <button id="mainWrap-travelNorth">travelNorth</button>
+      <div id="mainWrap-eastWest">
+    <button id="mainWrap-travelWest">travelWest</button>
+    <button id="mainWrap-travelEast">travelEast</button>
       </div>
-    <button id="travelSouth">travelSouth</button>
-  </div>
+    <button id="mainWrap-travelSouth">travelSouth</button>
   </div>
 </div>
+</div>
 
-  <div id="character" style="display:none">
-<table id="main_info">
+  <div class="charWrap" style="display:none">
+<table class="charWrap-mainInfo">
   <tr><td>
-<table  id="inventory">
+<table  class="charWrap-inventory">
   <caption>Inventory</caption>
    <tr>
     <td title="Necklace"></td>
@@ -61,37 +64,37 @@
    </tr>
  </table></td>
 
-  <td class="info">
+  <td class="charWrap-info">
     <strong>Basic information:</strong> <br>
-    Name:<span dataInfo="name">Hero</span> <br>
-    Level:<span dataInfo="level">0</span> <br>
-    Experiece:<span dataInfo="exp">0</span> <br>
-    Experience to lvl up:<span dataInfo="expTolvlup">1000</span> <br>
-    Gold:<span dataInfo="gold">0</span><br>
-    Enemies killed:<span dataInfo="enemiesKilled">0</span> <br>
+    Name:<span data-info="name">Hero</span> <br>
+    Level:<span data-info="level">0</span> <br>
+    Experiece:<span data-info="exp">0</span> <br>
+    Experience to lvl up:<span data-info="expTolvlup">1000</span> <br>
+    Gold:<span data-info="gold">0</span><br>
+    Enemies killed:<span data-info="enemiesKilled">0</span> <br>
  </td>
 
- <td class="info">
+ <td class="charWrap-info">
   <strong>Stats:</strong><br>
-  Hitpoints: <span dataInfo="hitpoints">100</span><br>
-  Damage: <span dataInfo="damage">5</span> <br>
-  Defence: <span dataInfo="defence">0</span> <br>
-  Magic defence: <span dataInfo="magicDefence">0</span> <br>
-  Crittical damage: <span dataInfo="critDamage">0</span>% <br>
-  Crittical chance: <span dataInfo="critChance">0</span>% <br>
+  Hitpoints: <span data-info="hitpoints">100</span><br>
+  Damage: <span data-info="damage">5</span> <br>
+  Defence: <span data-info="defence">0</span> <br>
+  Magic defence: <span data-info="magicDefence">0</span> <br>
+  Crittical damage: <span data-info="critDamage">0</span>% <br>
+  Crittical chance: <span data-info="critChance">0</span>% <br>
 </td>
 
- <td class="info"><strong>Attributes:</strong><br>
-  <label>Strength: <span dataAttr="strength">5</span></label><input title="Add attribute" type="submit" id="str" value="+"><br>
-  <label>Endurance: <span dataAttr="endurance">5</span></label><input title="Add attribute" type="submit" id="end" value="+"><br>
-  <label>Vitality: <span dataAttr="vitality">5</span></label><input title="Add attribute" type="submit" id="vit" value="+"><br>
-  Free attributes: <span dataInfo="freeAttributes">0</span>
+ <td class="charWrap-info"><strong>Attributes:</strong><br>
+  <label>Strength: <span data-attr="strength">5</span></label><input title="Add attribute" type="submit" id="str" value="+"><br>
+  <label>Endurance: <span data-attr="endurance">5</span></label><input title="Add attribute" type="submit" id="end" value="+"><br>
+  <label>Vitality: <span data-attr="vitality">5</span></label><input title="Add attribute" type="submit" id="vit" value="+"><br>
+  Free attributes: <span data-attr="freeAttributes">0</span>
  </td>
 </tr>
 </table>
 <br>
 <br>
-<table id="slots">
+<table class="charWrap-backpack">
 <tr>
   <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 </tr>
@@ -101,50 +104,70 @@
 </table>
   </div>
 
-<div id="forShop" style="display:none;">
+<div class="shopWrap" style="display:none;">
 <table>
   <caption>Item list:</caption>
 <tr>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription: <br>type,<br> stats,<br> requirement<br></td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription: <br>type,<br> stats,<br> requirement<br></td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
 
 </tr>
 
 <tr>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
 
 </tr>
 
 <tr>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
 
 </tr>
 
 <tr>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
-  <td class="item"><button>BUY</button></td>
-  <td class="description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
+  <td class="shopWrap-item"><button>BUY</button></td>
+  <td class="shopWrap-description">Decription:</td>
 
 </tr>
 
 </table></div>
+
+<div class="battleWrap" style="display: none;">
+
+  <div class="battleWrap-mainWindow">
+
+    <div class="battleWrap-playerWindow">
+      Player
+    </div>
+
+    <div class="battleWrap-battleLog">
+      Log
+    </div>
+
+    <div class="battleWrap-enemyWindow">
+      Enemy
+    </div>
+
+  </div>
+
+</div>
 
 </main>
 <footer>
