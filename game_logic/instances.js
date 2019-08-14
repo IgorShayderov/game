@@ -9,7 +9,15 @@ Location.newLocation("Black Lake");
 Location.newLocation("Haunted Castle");
 Location.newLocation("Border Outpost");
 //
-//Monsters
+//Haunted Castle <   >  Steep Mountains   <   >	 Haunted Castle		
+//		^			          ^					      ^
+//Frozen Valley  <   >  Marvelous Forest  <   >  Black Lake
+// 		^		              ^			              ^
+//Endless Plains <   >    Enterance       <   >  Twisted Meadows 
+//							  ~
+//					    Border Outpost
+//
+// //Monsters
 WildAnimal.newAnimal({name: "Little Rat",	 	hitpoints: 60,  damage:	3,   def: 0,    exp:	20,  gold:	5});
 WildAnimal.newAnimal({name: "Pholcidae", 		hitpoints: 50,  damage:	7,   def: 3,	exp:	35,  gold:	8});
 WildAnimal.newAnimal({name: "Weak Skeleton",   hitpoints: 110, damage:	8,   def: 0,    exp:	45,  gold:	13});

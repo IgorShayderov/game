@@ -9,7 +9,7 @@ let message = function(message){
 }
 //визуально добавляет атрибут персоонажу
 let incrAttribute = function(attribute){
-$(`.charWrap-info [data-attr=${attribute}]`).html(function(index, string){
+$(`.charWrap__mainInfo_attributes [data-info=${attribute}]`).html(function(index, string){
 let int = parseInt(string);
 return int += 1;
 });
@@ -20,15 +20,19 @@ let renderText = function(DOMelement, text){
 }
 //
 let renderLvlUp = function(lvl, toLvlUp, freeAttributes){
-	renderText(".charWrap-info [data-info=level]", lvl);
-	renderText(".charWrap-info [data-info=toLvlUp]", toLvlUp);
-	renderText(".charWrap-info [data-info=freeAttributes]", freeAttributes);
-	renderText(".charWrap-info [data-info=experience]", 0);
+	renderText(".charWrap__mainInfo_basic-info [data-info=level]", lvl);
+	renderText(".charWrap__mainInfo_basic-info [data-info=toLvlUp]", toLvlUp);
+	renderText(".charWrap__mainInfo_basic-info [data-info=freeAttributes]", freeAttributes);
+	renderText(".charWrap__mainInfo_basic-info [data-info=experience]", 0);
 }
 // gets random number from range
 let rand = function(lowest, highest){
 	let range = highest - lowest + 1;
 	return lowest + Math.floor(Math.random() * range);
+}
+//make element disabled
+let disable = function(elem){
+	elem.setAttribute("disabled", "disabled");
 }
 return{
 	message: message,

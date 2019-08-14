@@ -4,41 +4,51 @@
     background-image: url('images/character.jpg');
     font-size: 1.3rem;
     height: 100%;
-    
-	.charWrap-info{
-		vertical-align: top;
-		text-align: left;
-		padding: 10px;
+
+    td{
+    	border: 1px solid black;
+    	width: 100px;
+    	height: 100px;
+    }
+
+    .charWrap__mainInfo{
+    	display: flex;
+    	justify-content: flex-start;
+    	flex-wrap: wrap;
+        padding: 10px;
+    }
+    .charWrap__mainInfo_basic-info{
+        padding: 10px;
+    }
+    .charWrap__mainInfo_stats{
+        padding: 10px;
+    }
+    .charWrap__mainInfo_attributes{
+        padding: 10px;
+    }
+    .charWrap__mainInfo_inventory{
+
+    	caption{
+			color: black;
+			font-size:140%;
+			font-weight: bold;
+		}
+    	td{
+
+    	}
+    } 
+	.charWrap__mainInfo_backpack{
+        padding: 10px;
+		td{
+
+		}
+
 	}
-	.charWrap-info input{
-		font-size: 14pt;
-	}
-	.charWrap-inventory caption{
-		color: black;
-		font-size:140%;
-		font-weight: bold;
-	}
-	.charWrap-inventory{
-		display: inline;
-		color: black;
-		text-align: center;
-		border-collapse: collapse;
-	}
-	.charWrap-inventory td, .charWrap-backpack td{
-		border: 3px solid black;
-		padding: 10px;	
-		height: 100px;
-		width: 100px;
-	}
-	.charWrap-stats {
-		border: 3px solid black;
-	}
-	.charWrap-backpack{
-		border-collapse: collapse;
-		margin-top: -32px;
-		margin-left: 3px;
-	}
-	.charWrap-info input[value="+"]{
+	.charWrap__mainInfo_attributes {
+        padding: 10px;
+
+		input[value="+"]{
 		cursor: pointer;
+		}
 	}
 }

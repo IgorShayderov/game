@@ -30,14 +30,14 @@ const player = (function () {
 	}
 
 	let changeName = function(newName){
-		gameSystem.renderText(".info [data-info=name]", newName);
+		gameSystem.renderText(".charWrap__mainInfo_basic-info [data-info=name]", newName);
 	}	
 // передает все данные в view. Не стал делать в gameSystem т.к. данные инкапсулированы и доступа к ним нет.
 	let renderAll = function(){
 		const extendedObj = {};
 		$.extend(extendedObj, info, attr, stats);
 	$.each(extendedObj, function(key, value){
-		$(`.info [data-info=${key}]`).html(value);
+		$(`.charWrap__mainInfo [data-info=${key}]`).html(value);
 	})
 	}
 
@@ -48,25 +48,25 @@ const player = (function () {
 			attr.strength += 1;
 			info.freeAttributes -= 1;
 			stats.damage += DAMAGE_BONUS_PER_STRENGTH;
-			gameSystem.renderText(".info [data-info=damage]", stats.damage);
+			gameSystem.renderText(".charWrap__mainInfo_stats [data-info=damage]", stats.damage);
 			gameSystem.incrAttribute("strength");
 			break;
 			case "endurance":
 			attr.endurance += 1;
 			info.freeAttributes -= 1;
 			stats.defence += DEFENCE_BONUS_PER_ENDURANCE;
-			gameSystem.renderText(".info [data-info=defence]", stats.defence);
+			gameSystem.renderText(".charWrap__mainInfo_stats [data-info=defence]", stats.defence);
 			gameSystem.incrAttribute("endurance");
 			break;
 			case "vitality":
 			attr.vitality += 1;
 			info.freeAttributes -= 1;
 			stats.hitpoints += HP_BONUS_PER_VITALITY;
-			gameSystem.renderText(".info [data-info=hitpoints]", stats.hitpoints);
+			gameSystem.renderText(".charWrap__mainInfo_stats [data-info=hitpoints]", stats.hitpoints);
 			gameSystem.incrAttribute("vitality");			
 			break;
 		}
-			gameSystem.renderText(".info [data-info=freeAttributes]", info.freeAttributes);
+			gameSystem.renderText(".charWrap__mainInfo_attributes [data-info=freeAttributes]", info.freeAttributes);
 	}
 
 	let equipItem = function(item){
@@ -148,11 +148,11 @@ const player = (function () {
 	// 		else puts "Something goes wrong."
 	// 	}
 	// }
-
-		// def par_gained(parameter_to_gain) # gold or exp
-	// 	result = parameter_to_gain * rand(1.0..1.5)
-	// 	return result.to_i
-	// end
+// gold of exp
+		def par_gained(parameter_to_gain)
+		result = parameter_to_gain * gameSystem.rand(1.0, 1.5);
+		return result.to_i;
+	end
 
 	// def damage(opponent_1, opponent_2) #1st == dmg, 2nd == def
 	// 	if  rand(100) < opponent_1.stats[:crit_chance] || 5

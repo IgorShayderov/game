@@ -27,10 +27,10 @@ window.addEventListener("load", function (){
 		});
 	});
 
-	$(".mainWrap").stop(true,true).slideUp(400);
-	$(".battleWrap").stop(true,true).slideDown(400);
+	// $(".mainWrap").stop(true,true).slideUp(400);
+	// $(".battleWrap").stop(true,true).slideDown(400);
 
-	 $(".charWrap-info").on("click", "input[id]",function(event){
+	 $(".charWrap__mainInfo_attributes").on("click", "input[id]",function(event){
 	 	switch($(event.target).attr("id")){
 	 		case "str":
 	 			player.addAttribute("strength");
