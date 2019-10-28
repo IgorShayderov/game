@@ -44,9 +44,6 @@ nav.panel{
 	background-color: yellow;
 	margin-bottom: 10px;
 }
-// nav.panel button:first-child{
-// 	margin-left: 30px;
-// }
 .panel-menuToggle{
 	display: none;
 }
@@ -56,42 +53,12 @@ nav.panel{
 	flex-direction: column;
 	justify-content: space-between;
 }
-#mainWrap-buttonsContainer{
-	display: flex;
-	flex-direction: column;
-}
-#mainWrap-directionButtons{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+
 #systemMessageWindow{
-	/*white-space: pre;*/
 	border: 1px black solid;
 	background-color: yellow;
 	font-weight: bold;
 	font-style: italic;
 	padding: 5px;
 	height: 60px;
-}
-#mainWrap-currentLocation{
-	font-weight: bold;
-
-	span{
-		color: red;
-		font-style: italic;
-	}
-}
-
-@media screen and (max-width: 800px) {
-	.panel-menuWrap{
-		display: none;
-		position: absolute;
-	}
-	.panel-menuToggle{
-		display: inline-block;
- 	}
-	.panel-menuWrap button{
-		display: block;
-	}
 }

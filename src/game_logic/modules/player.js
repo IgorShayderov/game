@@ -1,5 +1,4 @@
-const player = (function () {
-
+export * from "./player";
 	const HP_BONUS_PER_VITALITY = 10;
 	const DEFENCE_BONUS_PER_ENDURANCE = 2;
 	const DAMAGE_BONUS_PER_STRENGTH = 1;
@@ -15,7 +14,6 @@ const player = (function () {
 		freeAttributes: 5,
 		enemiesKilled: 0
 	}
-
 	let attr = {
 		strength: 5,
 		endurance: 5,
@@ -29,11 +27,20 @@ const player = (function () {
 		gloves: null, leggins: null, boots: null
 	}
 
-	let changeName = function(newName){
+export	let changeName = function(newName){
 		gameSystem.renderText(".charWrap__mainInfo_basic-info [data-info=name]", newName);
 	}	
+
+export	let levelUp = function(){
+		info[exp] = 0;
+		info[expTolvlup] = info[expTolvlup] * 2;
+		info[freeAttributes] += 3;
+		info[level] += 1;
+		gameSystem.renderLvlUp(info[level], expTolvlup, freeAttributes);
+		gameSystem.message(`You reached character's level ${level}.`);
+	}
 // передает все данные в view. Не стал делать в gameSystem т.к. данные инкапсулированы и доступа к ним нет.
-	let renderAll = function(){
+export	let renderAll = function(){
 		const extendedObj = {};
 		$.extend(extendedObj, info, attr, stats);
 	$.each(extendedObj, function(key, value){
@@ -41,7 +48,7 @@ const player = (function () {
 	})
 	}
 
-	let addAttribute = function(attribute){
+export	let addAttribute = function(attribute){
 		if(info.freeAttributes <= 0){gameSystem.message("There are no free attributes."); return false;}
 		switch(attribute){
 			case "strength":
@@ -69,7 +76,7 @@ const player = (function () {
 			gameSystem.renderText(".charWrap__mainInfo_attributes [data-info=freeAttributes]", info.freeAttributes);
 	}
 
-	let equipItem = function(item){
+export	let equipItem = function(item){
 		if (inventory[item.type] === null){
 			if (item.stengthRequired > attr.strength){
 				return gameSystem.message(`This item requires ${item.stengthRequired} strength.`);
@@ -90,7 +97,7 @@ const player = (function () {
 		
 	}
 
-	let unequipItem = function(item){
+export	let unequipItem = function(item){
 		if (inventory[item.type] === null){
 			return gameSystem.message(`There is no item on ${item.type} slot.`);
 		}
@@ -99,74 +106,19 @@ const player = (function () {
 		gameSystem.message(`${item.name} has been unequiped.`);
 	}
 
-	let levelUp = function(){
-		info[exp] = 0;
-		info[expTolvlup] = info[expTolvlup] * 2;
-		info[freeAttributes] += 3;
-		info[level] += 1;
-		gameSystem.renderLvlUp(info[level], expTolvlup, freeAttributes);
-		gameSystem.message(`You reached character's level ${level}.`);
-	}
 // слияние статов при одевании вещи
-	let mergeItemStats = function(item){
+export	let mergeItemStats = function(item){
 		for(let par in item.parameters){
 			stats[par] += item.parameters[par];
 		}
 	}
 
-	let removeItemStats = function(item){
+export	let removeItemStats = function(item){
 		for(let par in item.parameters){
 			stats[par] -= item.parameters[par];
 		}
 	}
 
-	let compareItemStats = function(){
+export	let compareItemStats = function(){
 
 	}
-
-	// let battle = function (opponent){
-	// 	let tempHpPlayer = stats.hitpoints;
-	// 	let tempHpEnemy = opponent.stats.hitpoints;
-	// 	while (tempHpPlayer > 0 || tempHpEnemy >0){
-	// 		let playerHit = stats.damage - opponent.defence;
-	// 		tempHpEnemy -= playerHit;
-	// 		gameSystem.message "You hit for #{your_hit} damage. #{name.stats[:name]} got #{tempHpEnemy}hp left."
-	// 		enemy_hit = damage(name, self) if tempHpEnemy > 0
-	// 		tempHpPlayer -= enemy_hit if tempHpEnemy > 0
-	// 		puts "#{name.stats[:name]} hit for #{enemy_hit} damage. You got #{tempHpPlayer}hp left." if tempHpEnemy > 0
-	// 		break if tempHpPlayer <= 0 || tempHpEnemy <= 0
-	// 	end
-	// 		if tempHpPlayer > 0 && tempHpEnemy <= 0
-	// 			gold_for_win = par_gained(name.stats[:gold])
-	// 			self.gold += gold_for_win
-	// 			exp_for_win = par_gained(name.stats[:exp])
-	// 			self.exp += exp_for_win
-	// 			puts "You earned #{gold_for_win} gold and #{exp_for_win} experience"
-	// 			self.lvl_up
-	// 		elsif tempHpPlayer <= 0
-	// 			puts "You died."
-	// 		else puts "Something goes wrong."
-	// 	}
-	// }
-// gold of exp
-		def par_gained(parameter_to_gain)
-		result = parameter_to_gain * gameSystem.rand(1.0, 1.5);
-		return result.to_i;
-	end
-
-	// def damage(opponent_1, opponent_2) #1st == dmg, 2nd == def
-	// 	if  rand(100) < opponent_1.stats[:crit_chance] || 5
-	// 		opponent_1.stats[:damage] *= opponent_1.stats[:crit_dmg] || 2
-	// 		puts 'Crittical hit!'
-	// 	end
-	// 	result = opponent_1.stats[:damage] * rand(0.8..1.4) - opponent_2.stats[:defence] / 2
-	// 	result = 1 if result < 1
-	// 	return result.to_i
-	// end
-	return{
-		changeName: changeName,
-		addAttribute: addAttribute,
-		renderAll: renderAll
-	}
-
-})();

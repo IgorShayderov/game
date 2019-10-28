@@ -1,82 +1,114 @@
 const gulp = require('gulp');
+const njkRender = require('gulp-nunjucks-render');
+const prettify = require('gulp-html-prettify');
 const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sourcemaps = require('gulp-sourcemaps');
-const jsFiles = [
-'./game_logic/jQuery/jquery-3.4.0.min.js',
-'./game_logic/system.js',
-'./game_logic/player.js',
-'./game_logic/wildanimal.js',
-'./game_logic/item.js',
-'./game_logic/location.js',
-'./game_logic/instances.js',
-'./game_logic/main_menu.js'
-]
+const cleanCSS = require('gulp-clean-css');
+const data = require('gulp-data');
+const fs = require('fs');
+const webpack = require('webpack-stream');
+const gulpif = require('gulp-if');
+const imagemin = require('gulp-imagemin');
 
-function html(){
-	return gulp.src('./views/*.html')
-	.pipe(gulp.dest('./build'))
-	.pipe(browserSync.stream());
-}
+const isDev = true;
+
+let webpackConfig = {
+	output: {
+		filename: 'all.js'
+	},
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: '/node_modules/'
+            }
+        ]
+    },
+    mode: isDev? 'development' : 'production',
+    devtool: isDev? 'eval-source-map' : 'none'
+};
 
 function images(){
-	return gulp.src('./images/**/*.*')
-	.pipe(gulp.dest('./build/images'))
+	return gulp.src('./src/images/**/*')
+	.pipe(imagemin())
+	.pipe(gulp.dest('./build/img'))
 }
-
-function style(){
-	return gulp.src('./style/*.css')
-	.pipe(sourcemaps.init())
+function nunjucks() {	
+	return gulp.src('./src/views/main.njk')
+	.pipe(plumber({
+		errorHandler: function(err) {
+			notify.onError({
+			title: "Ошибка в Nunjucks",
+			message: "<%= error.message %>"
+			})(err);
+		}
+		}))
+	.pipe(njkRender())
+	.pipe(prettify({
+		max_preserve_newlines: 1
+	}))
+	.pipe(gulp.dest('./build'))
+	.pipe(gulpif(isDev, browserSync.stream()));
+}
+function html() {
+	return gulp.src('./src/views/**/*.html')
+	.pipe(gulp.dest('./build'))
+	.pipe(gulpif(isDev, browserSync.stream()));
+}
+function scss (){
+	return gulp.src('./src/style/**/*.scss')
+	.pipe(plumber({
+    	errorHandler: function(err) {
+			notify.onError({
+			title: "Ошибка в CSS",
+			message: "<%= error.message %>"
+			})(err);
+	}
+    }))
+    .pipe(gulpif(isDev, sourcemaps.init()))
+	.pipe (sass())
+	.pipe(gulpif(!isDev, autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })))
 	.pipe(concat('all.css'))
+	.pipe(cleanCSS({
+		level: 2
+	}))
+	.pipe(gulpif(isDev, sourcemaps.write()))
 	.pipe(gulp.dest('./build'))
-	.pipe(browserSync.stream());
+	.pipe(gulpif(isDev, browserSync.stream()));
 }
-
-function js_files(){
-	return gulp.src(jsFiles)
-	.pipe(sourcemaps.init())
-	.pipe(concat('all.js'))
-	.pipe(gulp.dest('./build'))
-	.pipe(browserSync.stream());
+function scripts() {
+	return gulp.src('./src/game_logic/main.js')
+	.pipe(webpack(webpackConfig))
+	.pipe (gulp.dest('./build'))
+	.pipe(gulpif(isDev, browserSync.stream()));
 }
-
 function clean () {
 	return del(['./build/*']);
 }
-function scss (){
-	return gulp.src('./style/*.scss')
-	.pipe(plumber({
-      errorHandler: function(err) {
-        notify.onError({
-          title: "Ошибка в CSS",
-          message: "<%= error.message %>"
-        })(err);
-      }
-    }))
-    .pipe(sourcemaps.init() )
-	.pipe (sass())
-	.pipe(concat('all.css'))
-	.pipe(gulp.dest('./build'))
-	.pipe(browserSync.stream());
-}
-function watch(){
-	
+function watch() {	
 	    browserSync.init({
         server: {
             baseDir: "./build",
             directory: true
         }
-   		});   		
-	    gulp.watch('./views/*.html', html);
-	    gulp.watch('./style/*.scss', scss);
-	    gulp.watch('./game_logic/**/*.js', js_files);
-	    gulp.watch('./*.html', browserSync.reload);
+   		});
+   		
+	    gulp.watch('./src/vews/**/*.html', html);
+	    gulp.watch('./src/views/main.njk', nunjucks, browserSync.reload);
+	    gulp.watch('./src/style/**/*.scss', scss, browserSync.reload);
+	    gulp.watch('./src/game_logic/**/*.js', scripts, browserSync.reload);
 }
 
-let go = gulp.series(clean, gulp.parallel(html, images, scss, js_files), gulp.series(watch));
-gulp.task('go', go);
-
+gulp.task('cleaner', clean);
+let go = gulp.series(clean, images, html, gulp.parallel(nunjucks, scss, scripts), gulp.series(watch));
+gulp.task('default', go);
+let production = gulp.series(clean, images, html, gulp.parallel(nunjucks, scss, scripts));
+gulp.task('prod', production);
