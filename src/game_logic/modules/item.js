@@ -1,15 +1,16 @@
 const items = {
-	necklace: new Map(),
-	helmet: new Map(),
-	ring: new Map(),
-	weapon: new Map(),
-	armor: new Map(),
-	shield: new Map(),
-	gloves: new Map(),
-	leggins: new Map(),
-	boots: new Map(),
-	none: new Map()
+	"necklace": new Map(),
+	"helmet": new Map(),
+	"ring": new Map(),
+	"weapon": new Map(),
+	"armor": new Map(),
+	"shield": new Map(),
+	"gloves": new Map(),
+	"leggins": new Map(),
+	"boots": new Map(),
+	"none": new Map()
 };
+
 // example
 // items = {
 // 	weapon: {"nunjucks": itemInstance.params{
@@ -26,7 +27,7 @@ export default class Item {
 		this.params = params;
 	}
 
-	static getAll(){
+	static listAll(){
 		for ( let [name, map] of Object.entries(items) ) {
 			map.forEach(function(itemInst, key){
 				console.log(`${key}: ${itemInst.params.type}`);
@@ -34,17 +35,24 @@ export default class Item {
 		}		
 	}
 
+	static getItem(name, type){
+		console.log( items[type].get(name) );
+	}
+
 	static newItem(params){
 		if (!items[params.type]){
 			console.log("There is no such type. " + params.name);
+			return false;
+		} else if ( items[params.type].has(params.name) ){
+			console.log(`There is ${params.name} already.`)
+			return false;
 		}
-
 		items[params.type].set(params.name, new Item(params));
 	}
 
 }
 
-//weapon
+//weapon factory
 Item.newItem({name: "Axe of Executioner", type: "weapon", hitpoints: 80, damage: 75, critChance: 10, url:"./images/items/weapon/AxeofExecutioner.jpg", description: "Legendary weapon of the executioner who has killed his own son during execution. It makes his owner incredibly strong."});
 Item.newItem({name: "Makarov Pistol", type: "weapon", damage: 50, critChance: 15, critDamage: 100, url:"./images/items/weapon/MakarovPistol.png", description: "Reliable and easy in maintain pistol."});
 Item.newItem({name: "Iron Axe", type: "weapon", damage: 7, url:"./images/items/weapon/IronAxe.png", description: "Simple weapon. Low damage."});

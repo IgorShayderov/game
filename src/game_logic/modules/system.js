@@ -1,24 +1,23 @@
 export * from "./system";
-import $ from "jquery";
 
 // сообщение в окошке SystemMessageWindow
 export let message = function(message){
-	if ($("#systemMessageWindow span").length === 3){
-		$("#systemMessageWindow span").first().remove();
-		$("#systemMessageWindow br").first().remove();
+	if (document.querySelectorAll("#systemMessageWindow > div").length === 3){
+		document.querySelector("#systemMessageWindow > div:first-child").remove();
 	}
-	$("#systemMessageWindow").append(`<br><span>${message}</span>`);
+	document.querySelector("#systemMessageWindow").appendChild(document.createElement("div"));
+	document.querySelector("#systemMessageWindow > div:last-child").innerHTML = `${message}`;
 }
 //визуально добавляет атрибут персоонажу
 export let incrAttribute = function(attribute){
-$(`.charWrap__mainInfo_attributes [data-info=${attribute}]`).html(function(index, string){
-let int = parseInt(string);
-return int += 1;
+	document.querySelector(`.charWrap__mainInfo_attributes [data-info=${attribute}]`).html(function(index, string){
+	let int = parseInt(string);
+	return int += 1;
 });
 }
 // передает значение в dom-элемент
 export let renderText = function(DOMelement, text){
-	$(DOMelement).html(text);
+	document.querySelector(DOMelement).html(text);
 }
 //
 export let renderLvlUp = function(lvl, toLvlUp, freeAttributes){

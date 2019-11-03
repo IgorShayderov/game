@@ -1,4 +1,6 @@
 export * from "./player";
+import Item from "./item";
+
 	const HP_BONUS_PER_VITALITY = 10;
 	const DEFENCE_BONUS_PER_ENDURANCE = 2;
 	const DAMAGE_BONUS_PER_STRENGTH = 1;
@@ -76,8 +78,10 @@ export	let addAttribute = function(attribute){
 			gameSystem.renderText(".charWrap__mainInfo_attributes [data-info=freeAttributes]", info.freeAttributes);
 	}
 
-export	let equipItem = function(item){
+export	let equipItem = function(thing){
+		let item = Item.getItem(thing);
 		if (inventory[item.type] === null){
+
 			if (item.stengthRequired > attr.strength){
 				return gameSystem.message(`This item requires ${item.stengthRequired} strength.`);
 			}

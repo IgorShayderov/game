@@ -9,5 +9,8 @@ import WildAnimal from "./modules/wildanimal";
 window.addEventListener("load", function (){
 
 
+GameSystem.message("Hello");
+Item.listAll();
+Item.getItem("Axe of Executioner", "weapon");
 
 });
