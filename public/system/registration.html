@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Registration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="wclassth=device-wclassth, initial-scale=1">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+	body{
+		margin: 1%;
+	}
+	p{
+		margin-bottom: 0;
+	}
+	.progress{
+
+	}
+	.fa-check-circle{
+		color: green;
+	}
+	.fa-exclamation-circle{
+		color: red;
+	}
+	.main-wrap__title{
+		text-align: center;
+	}
+	.reg-form{
+		margin-left: 2%;
+	}
+	.reg-form__error-msg{
+
+	}
+	.final-result{
+		border: 1px solid black;
+		min-width: 300px;
+	}
+</style>
+</head>
+
+<body>
+
+<main class="main-wrap" id="main">
+	<h1 class="main-wrap__title">Registration.</h1>
+
+	<form method="post" action="/registration" class="reg-form">
+		<h4>Please, fill the forms.</h4>
+
+		<template v-for="(field, index) in fields">
+			<label>{{ field.labelText }} <span v-if="field.value" class="fa" :key="field.name"
+			 :class="field.validated ? 'fa-check-circle' : 'fa-exclamation-circle'"></span>
+				<input :name="field.name" :type="field.type" class="form-control" v-model="field.value" 
+				v-on:keyup="field.name === 'confirm-password' ? confirmPassword(field, index) : validateInput(field)">
+			</label>
+			<br>
+		</template>
+
+		<p>Your gender:</p>
+		<label class="form-check-label">
+			<input name="chooseGender" class="form-check-input" type="radio"> 
+			Male
+		</label>
+		<br>
+		<label class="form-check-label">
+			<input name="chooseGender" class="form-check-input" type="radio"> 
+			Female
+		</label>
+		<br>
+		<label>Choose your country:
+			<br>
+			<select>
+				<option>Russia</option>
+				<option>Gonduras</option>
+			</select>
+		</label>
+		<br>
+		<label>
+			<input name='allowSpam' class="form-check-input" type="checkbox"> 
+			Send me e-mail messages about news and updates.
+		</label><br>
+		<button class="btn btn-success" :disabled="!isFormValidated" type="submit" v-on:click.prevent="sendData($event)">Create account.</button>
+	</form>
+	<br>
+
+<!-- 	<table class="final-result">
+		<tr v-for="field in fields">
+			<td>{{ field.name }}</td>
+			<td>{{ field.value }}</td>
+		</tr>
+	</table> -->
+
+</main>
+<script>
+new Vue({
+	el: '#main',
+	data:
+	{
+		isFormValidated: false,
+		fields: 
+		[		
+			{
+				name: 'login',
+				type: 'text',
+				value: '',
+				labelText: 'Your login:',
+				pattern: /[a-zA-Z0-9]{5,20}/,
+				validated: false,
+			},
+		  	{
+		  		name: 'password',
+		  		type: 'password',
+		  		value: '',
+		  		labelText: 'Your password:',
+		  		pattern: /[a-zA-Z0-9]{6,20}/,
+				validated: false,
+		  	},
+		  	{
+		  		name: 'confirm-password',
+		  		type: 'password',
+		  		value: '',
+		  		labelText: 'Confirm password:',
+				validated: false,
+		  	},
+		  	{
+		  		name: 'email',
+		  		type: 'email',
+		  		value: '',
+		  		labelText: 'Your email:',
+		  		pattern: /^.+@.+\.\w{2,3}$/,
+				validated: false,
+		  	},
+		]
+	},
+	methods:
+	{
+		validateInput(field) {
+			field.pattern.test(field.value) ? field.validated = true : field.validated = false;
+		},
+		confirmPassword(field, index) {
+			this.fields[index - 1].value === field.value ? field.validated = true : field.validated = false;
+		},
+		sendData(event) {
+			
+		}
+	},
+	computed:
+	{
+
+	},
+	beforeUpdate() {
+		console.log("beforeUpdate");
+	},
+});
+</script>
+</body>
