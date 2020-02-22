@@ -15,10 +15,10 @@ import E404 from './components/E404';
 import {store} from './store/store';
 
 const routes = [
-	// {
-	// 	path: '',
-	// 	redirect: {name: 'tavern'}
-	// },
+	{
+	path: '',
+	redirect: {name: 'Tavern'}
+	},
 	{
 		path: '/arena',
 		component: Arena,
@@ -32,6 +32,7 @@ const routes = [
 		component: PlayerInfo,
 	},
 	{
+		name: 'Settings',
 		path: '/settings',
 		component: Settings,
 	},
@@ -40,7 +41,7 @@ const routes = [
 		component: Shop,
 	},
 	{
-		name: 'tavern',
+		name: 'Tavern',
 		path: '/tavern',
 		component: Tavern,
 	},

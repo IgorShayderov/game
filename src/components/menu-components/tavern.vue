@@ -1,5 +1,7 @@
 <template>
-<h1>Tavern</h1>
+<div class="tavern-wrap">
+	<h3>Tavern</h3>
+</div>
 </template>
 
 <script>

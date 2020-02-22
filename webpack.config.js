@@ -11,7 +11,7 @@ module.exports = {
   devServer: {
         overlay: true,
         watchContentBase: true,
-        host: '192.168.0.12' // мой IPv4 адресс, чтобы можно было заходить с других устройств в одной сети
+        // host: '192.168.0.12', // мой IPv4 адресс, чтобы можно было заходить с других устройств в одной сети
   },
   module: {
     rules: [
@@ -69,14 +69,16 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          url: true,
         }
       }
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      gameimg: './images',
     },
     extensions: ['*', '.js', '.vue', '.json']
   },

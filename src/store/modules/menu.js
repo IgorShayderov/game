@@ -13,12 +13,12 @@ export default {
 				url: '/arena',
 			},
 			{
-				title: 'Shop',
-				url: '/shop',
-			},
-			{
 				title: 'Dungeon',
 				url: '/dungeon',
+			},
+			{
+				title: 'Shop',
+				url: '/shop',
 			},
 			{
 				title: 'Inventory',
@@ -27,10 +27,6 @@ export default {
 			{
 				title: 'Player info',
 				url: '/player-info',
-			},
-			{
-				title: 'Settings',
-				url: '/settings',
 			},
 		],
 	},
@@ -48,7 +44,7 @@ export default {
 		}
 	},
 	actions: {
-		showHideMenu(store) {
+		changeMenuStatus(store) {
 			store.commit('changeMenuStatus');
 		}
 

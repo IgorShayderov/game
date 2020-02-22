@@ -1,5 +1,7 @@
 <template>
-	<h1>Dungeon</h1>
+<div class="settings-wrap">
+	<h3>Dungeon</h3>
+</div>
 </template>
 
 <script>

@@ -1,7 +1,6 @@
 <template>
 	<header class="header-wrap">
 		<button class="header-wrap__menu-button" @click="menuToggle">
-			Menu
 		</button>
 	</header>
 </template>
@@ -22,10 +21,10 @@ export default {
 	methods:
 	{
 		...mapActions('menu', {
-			showHideMenu: 'showHideMenu'
+			changeMenuStatus: 'changeMenuStatus'
 		}),
 		menuToggle() {
-			this.showHideMenu();
+			this.changeMenuStatus();
 		}
 	},
 	computed:
@@ -37,15 +36,17 @@ export default {
 
 <style lang="scss" scoped>
 	.header-wrap {
-		border-bottom: 3px solid blue;
 		height: 15vh;
-		width: 100vw;
 		background-color: red;
 		display: flex;
 	}
 	.header-wrap__menu-button {
-		border: 1px solid black;
-		padding: 0;
+		background-image: url('../../images/menu/menu-button.svg');
+		background-repeat: no-repeat;
+		background-position-y: center;
+		background-position-x: center;
+		background-size: contain;
+		background-color: grey;
 		width: 70px;
 		margin: 5px;
 	}

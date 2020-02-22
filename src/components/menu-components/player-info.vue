@@ -5,20 +5,22 @@
 	<div class="info-views-wrap">
 	    <ul class="basic-info" v-show="currentlyShowed === 1">
 	    	<h4 class="basic-info__title">Basic info</h4>
-	    	<li class="basic-info__item" v-for="item in basicInfo">{{ item.title }}: {{ item.value }}</li>
+	    	<li class="basic-info__item" v-for="(item, index) in basicInfo" :key="index">{{ item.title }}: {{ item.value }}</li>
 	    </ul>
 
-	    <div class="stats" v-show="currentlyShowed === 2">
-	      <strong>Stats:</strong><br>
-	      Hitpoints: <span data-info="hitpoints">100</span><br>
-	      Damage: <span data-info="damage">5</span> <br>
-	      Defence: <span data-info="defence">0</span> <br>
-	      Magic defence: <span data-info="magicDefence">0</span> <br>
-	      Crittical damage: <span data-info="critDamage">0</span>% <br>
-	      Crittical chance: <span data-info="critChance">0</span>% <br>
-	    </div>
+		<ul class="stats" v-show="currentlyShowed === 2">
+			<h4 class="stats__title">Stats</h4>
+			<li class="stats__item" v-for="(item, index) in stats" :key="index">{{ item.title }}: {{ item.value }}</li>
+		</ul>
 
-	    <div class="attributes" v-show="currentlyShowed === 3">
+		<ul class="attributes" v-show="currentlyShowed === 3">
+			<h4 class="attributes__title">Attributes</h4>
+			<li class="attributes__item" v-for="(item, index) in attributes" :key="index">{{ item.title }}: {{ item.value }}
+				<button v-if="item.title != 'Free attributes'" class="attributes__button" title="Add attribute" @click="addAttribute(index)">+</button>
+			</li>
+		</ul>
+	</div>
+	    <!-- <div class="attributes" v-show="currentlyShowed === 3">
 	      <strong>Attributes:</strong><br>
 	      <label>Strength: <span>5</span></label>
 	      <button class="attributes__button" title="Add attribute">+</button><br>
@@ -27,15 +29,14 @@
 	      <label>Vitality: <span>5</span></label>
 	      <button class="attributes__button" title="Add attribute">+</button><br>
 	      Free attributes: <span>0</span>
-	    </div>
-	</div>
-
+	    </div> -->
     <button class="player-info-wrap__button-next" @click="showNext">Next</button>
 </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
+
 
 export default {
 	properties:
@@ -50,11 +51,21 @@ export default {
 	},
 	methods:
 	{
+		...mapActions('player', {
+			incrementAttribute: 'addAttribute'
+		}),
 		showNext() {
 			if (this.currentlyShowed === this.amountOfInfoViews) {
 				this.currentlyShowed = 1;
 			} else {
 				this.currentlyShowed += 1;
+			}
+		},
+		addAttribute(index) {
+			const freeAttributes = this.getFreeAttributes;
+
+			if (freeAttributes > 0) {
+				this.incrementAttribute(index);
 			}
 		}
 	},
@@ -62,6 +73,10 @@ export default {
 	{
 		...mapGetters('player', {
 				basicInfo: 'getBasicInfo',
+				stats: 'getStats',
+				attributes: 'getAttributes',
+				getCertainAttribute: 'getCertainAttribute',
+				getFreeAttributes: 'getFreeAttributes',
 		}),
 	},
 }
@@ -86,6 +101,24 @@ export default {
 		margin: 0;
 	}
 	.basic-info__item {
+		list-style-type: none;
+	}
+	.stats {
+		margin: 0;
+	}
+	.stats__title {
+		margin: 0;
+	}
+	.stats__item {
+		list-style-type: none;
+	}
+	.attributes {
+		margin: 0;
+	}
+	.attributes__title {
+		margin: 0;
+	}
+	.attributes__item {
 		list-style-type: none;
 	}
 	.attributes__button {

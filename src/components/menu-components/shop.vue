@@ -1,5 +1,30 @@
 <template>
-<h1>Shop</h1>
+<div class="shop-wrap">
+	<h3>Shop</h3>
+
+	<table class="shop">
+		<tr>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+		</tr>
+		<tr>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+		</tr>
+		<tr>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+		</tr>
+		<tr>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+			<td class="shop__item"></td>
+		</tr>
+	</table>
+</div>
 </template>
 
 <script>
@@ -25,5 +50,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+	.shop {
+		margin: auto;
+	}
+	.shop__item {
+		border: 1px solid black;
+		width: 80px;
+		height: 80px;
+	}
 </style>
