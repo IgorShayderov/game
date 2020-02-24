@@ -41,7 +41,7 @@ export default {
 		display: flex;
 	}
 	.header-wrap__menu-button {
-		background-image: url('../../images/menu/menu-button.svg');
+		background-image: url('~images/menu/menu-button.svg');
 		background-repeat: no-repeat;
 		background-position-y: center;
 		background-position-x: center;

@@ -43,7 +43,8 @@ export default {
 			state.isMenuShowed = state.isMenuShowed ? false : true;
 		}
 	},
-	actions: {
+	actions:
+	{
 		changeMenuStatus(store) {
 			store.commit('changeMenuStatus');
 		}

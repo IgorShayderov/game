@@ -38,6 +38,10 @@ export default {
 				value: 5,
 			},
 			{
+				title: 'Magic damage',
+				value: 0,
+			},
+			{
 				title: 'Defence',
 				value: 0,
 			},
@@ -47,7 +51,7 @@ export default {
 			},
 			{
 				title: 'Crittical damage',
-				value: 100,
+				value: 110,
 			},
 			{
 				title: 'Crittical chance',
@@ -116,7 +120,8 @@ export default {
 			}
 		},
 	},
-	actions: {
+	actions:
+	{
 		addAttribute(store, index) {
 			store.commit('addAttribute', index);
 		}

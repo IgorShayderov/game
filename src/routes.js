@@ -10,6 +10,7 @@ import Settings from './components/menu-components/settings';
 import Shop from './components/menu-components/shop';
 import Tavern from './components/menu-components/tavern';
 import Inventory from './components/menu-components/inventory';
+import Battle from './components/menu-components/battle'
 import E404 from './components/E404';
 
 import {store} from './store/store';
@@ -17,7 +18,7 @@ import {store} from './store/store';
 const routes = [
 	{
 	path: '',
-	redirect: {name: 'Tavern'}
+	redirect: {name: 'Battle'}
 	},
 	{
 		path: '/arena',
@@ -46,9 +47,14 @@ const routes = [
 		component: Tavern,
 	},
 	{
-		name: 'inventory',
+		name: 'Inventory',
 		path: '/inventory',
 		component: Inventory,
+	},
+	{
+		name: 'Battle',
+		path: '/battle',
+		component: Battle,
 	},
 	{
 		path: '*',

@@ -45,6 +45,8 @@ export default {
 
 <style lang="scss" scoped>
 	.menu-wrap {
+		position: absolute;
+		z-index: 50;
 		font-size: 1.6rem;
 	}
 	.menu-content {

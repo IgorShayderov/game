@@ -11,6 +11,7 @@ module.exports = {
   devServer: {
         overlay: true,
         watchContentBase: true,
+        historyApiFallback: true,
         // host: '192.168.0.12', // мой IPv4 адресс, чтобы можно было заходить с других устройств в одной сети
   },
   module: {
@@ -78,7 +79,7 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      gameimg: './images',
+      'images': path.resolve(__dirname, './images'),
     },
     extensions: ['*', '.js', '.vue', '.json']
   },

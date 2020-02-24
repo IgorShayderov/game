@@ -10,7 +10,9 @@
 
 		<ul class="stats" v-show="currentlyShowed === 2">
 			<h4 class="stats__title">Stats</h4>
-			<li class="stats__item" v-for="(item, index) in stats" :key="index">{{ item.title }}: {{ item.value }}</li>
+			<li class="stats__item" v-for="(item, index) in stats" :key="index">{{ item.title }}: {{ item.value }}
+			<span v-if="/Crittical/gi.test(item.title)">%</span>
+			</li>
 		</ul>
 
 		<ul class="attributes" v-show="currentlyShowed === 3">
@@ -20,16 +22,7 @@
 			</li>
 		</ul>
 	</div>
-	    <!-- <div class="attributes" v-show="currentlyShowed === 3">
-	      <strong>Attributes:</strong><br>
-	      <label>Strength: <span>5</span></label>
-	      <button class="attributes__button" title="Add attribute">+</button><br>
-	      <label>Endurance: <span>5</span></label>
-	      <button class="attributes__button" title="Add attribute">+</button><br>
-	      <label>Vitality: <span>5</span></label>
-	      <button class="attributes__button" title="Add attribute">+</button><br>
-	      Free attributes: <span>0</span>
-	    </div> -->
+
     <button class="player-info-wrap__button-next" @click="showNext">Next</button>
 </div>
 </template>
@@ -84,9 +77,15 @@ export default {
 
 <style lang="scss" scoped>
 	.player-info-wrap {
+		background-image: url('~images/menu/character.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: right;
 		margin: 0;
 		display: flex;
 		flex-direction: column;
+		height: 77vh;
+		color: yellow;
 	}
 	.info-views-wrap {
 		height: 50vh;

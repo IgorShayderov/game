@@ -4,10 +4,14 @@
 	>
 	</header-info>
 	<div class="content">
-		<main-menu v-show="isMenuShowed">
-		</main-menu>
-		<router-view v-show="!isMenuShowed">
-		</router-view>
+		<transition name="show-menu">
+			<main-menu v-show="isMenuShowed">
+			</main-menu>
+		</transition>
+		<transition name="show-content">
+			<router-view v-show="!isMenuShowed">
+			</router-view>
+		</transition>
 	</div>
 	<footer-info></footer-info>
 </main>
@@ -43,6 +47,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.show-menu-enter {
+		opacity: 0.1;
+	}
+	.show-menu-enter-active {
+		transition-duration: 0.9s;
+	}
+	.show-menu-enter-to {
+		opacity: 1;
+	}
+	.show-menu-leave {
+		opacity: 0.9;
+	}
+	.show-menu-leave-active {
+		transition-duration: 0.9s;
+	}
+	.show-menu-leave-to {
+		opacity: 0.1;
+	}
+	.show-content-enter {
+		opacity: 0.1;
+	}
+	.show-content-enter-active {
+		transition-duration: 0.9s;
+	}
+	.show-content-enter-to {
+		opacity: 1;
+	}
+	.show-content-leave {
+		opacity: 0.9;
+	}
+	.show-content-leave-active {
+		transition-duration: 0.9s;
+	}
+	.show-content-leave-to {
+		opacity: 0.1;
+	}
     .main-wrap {
     	display: flex;
     	flex-direction: column;

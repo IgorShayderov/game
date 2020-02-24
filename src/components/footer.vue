@@ -34,12 +34,12 @@ export default {
 		justify-content: flex-end;
 	}
 	.footer-wrap__settings-button {
-		background-image: url('../../images/menu/settings.png');
+		background-image: url('~images/menu/settings.png');
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position-y: center;
 		background-position-x: center;
-		border: 1px solid black;
+		background-color: grey;
 		padding: 0;
 		width: 70px;
 		margin: 5px;
