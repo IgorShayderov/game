@@ -24,22 +24,16 @@
 
 	<table class="backpack">
      	<tr class="backpack__row">
-			<td class="backpack__previous-item"></td>
-
-			<transition>
-				<tbody class="visible-items">
-					<td class="backpack__item backpack__item_visible">
-					</td>
-					<td class="backpack__item backpack__item_visible">
-					</td>
-
-
-					<td class="backpack__item backpack__item_visible">
-					</td>
-
-
-				</tbody>
-			</transition>
+			<td class="backpack__previous-item" @click="showPreviousItem()"></td>
+	
+				<transition-group name="backpack-slots"
+					v-on:before-enter="beforeEnter"
+    				v-on:enter="enter"
+    				v-on:leave="leave">
+					<td v-for="(item, index) in backpackedItems" :key="item.title || index" class="backpack__item">
+						{{ item.title }}
+    				</td>
+				</transition-group>
 
 			<td class="backpack__next-item" @click="showNextItem()"></td>
      	</tr>
@@ -49,6 +43,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
 	properties:
 	{
@@ -60,32 +56,34 @@ export default {
 		}
 	},
 	methods:
-	{
+	{		
+		...mapActions('inventory', {
+			nextItem: 'nextItem',
+			previousItem: 'previousItem',
+		}),
 		showNextItem() {
-			// const hiddenItems = document.querySelectorAll('.backpack__item_hidden');
-			// const firstHiddenItem = hiddenItems[0];
+			this.nextItem();
+		},
+		showPreviousItem() {
+			this.previousItem();
+		},
+		beforeEnter: function (el) {
 
-			// firstHiddenItem.classList.add('backpack__item_visible');
-			// firstHiddenItem.classList.remove('backpack__item_hidden');
-
-			// const visibleItems = document.querySelectorAll('.backpack__item_visible');
-			// const lastVisibleItem = visibleItems[visibleItems.length - 1];
-
-			// visibleItems.forEach((item) => {
-			// 	item.style.transform = 'translate(85px)';
-			// });
-
-			// lastVisibleItem.style.opacity = 0
-			// lastVisibleItem.classList.remove('backpack__item_visible');
-			// lastVisibleItem.classList.add('backpack__item_hidden');
-
-
+    	},
+		enter: function (el, done) {
+		// 			opacity: 0;
+		// transform: translateX(-80px);
+		},
+		leave: function (el, done) {
+			
 
 		}
 	},
 	computed:
 	{
-
+		...mapGetters('inventory', {
+				backpackedItems: 'getBackpackedItems',
+		}),
 	},
 }
 </script>
@@ -112,9 +110,6 @@ export default {
 	.backpack {
 		margin: auto;
 	}
-	.visible-items {
-		overflow: hidden;
-	}
 	.backpack__row {
 		position: relative;
 	}
@@ -140,6 +135,23 @@ export default {
 		height: 80px;
 		transition-duration: 0.9s;
 	}
+
+	// .backpack-slots-enter {
+
+	// }
+	// .backpack-slots-leave {
+	// 	left: 280px;
+	// 	bottom: 3px;
+	// }
+	// .backpack-slots-leave-to {
+	// 	left: 307px;
+	// 	bottom: 3px;
+	// 	opacity: 0;
+	// }
+	// .backpack-slots-leave-active {
+	// 	position: absolute;
+	// }
+
 	#necklace {
 		background-image: url('~images/inventory/necklace.svg');
 		background-size: 40px 40px;

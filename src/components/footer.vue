@@ -1,6 +1,6 @@
 <template>
 	<footer class="footer-wrap">
-		<button class="footer-wrap__settings-button"></button>
+		<button title="Settings" class="footer-wrap__settings-button"></button>
 	</footer>
 </template>
 

@@ -39,18 +39,46 @@ export default {
 				item: null,
 			}
 		},
-		backpackedItems: [],
+		backpackedItems: [{}, {}, {}],
 		showedItems: [],
 	},
 	getters: {
 		getItemSlot(state, index) {
 			return state.equipedItems[index]
+		},
+		getBackpackedItems(state) {
+			return state.backpackedItems;
 		}
 	},
 	mutations: {
+		nextItem(state) {
+			const backpackedItems = state.backpackedItems;
+			const test = Math.random().toFixed(3);
 
+			backpackedItems.pop();
+			backpackedItems.unshift(
+				{
+					title: test,
+				});
+		},
+		previousItem(state) {
+			const backpackedItems = state.backpackedItems;
+			const test = Math.random().toFixed(3);
+
+			backpackedItems.shift();
+			backpackedItems.push(
+				{
+					title: test,
+				});
+			console.log(test);
+		},
 	},
 	actions: {
-
+		nextItem(store) {
+			store.commit('nextItem');
+		},
+		previousItem(store) {
+			store.commit('previousItem');
+		},
 	},
 };

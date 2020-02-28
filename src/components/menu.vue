@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
 	properties:
@@ -48,14 +48,14 @@ export default {
 		position: absolute;
 		z-index: 50;
 		font-size: 1.6rem;
+		left: 50%;
+		transform: translate(-50%); 
 	}
 	.menu-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding-left: 0;
-		margin-top: 1.5vh;
-		margin-bottom: 1.5vh;
 	}
 	.menu-content__item {
 		margin: 5px;

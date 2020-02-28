@@ -1,6 +1,6 @@
 <template>
 	<header class="header-wrap">
-		<button class="header-wrap__menu-button" @click="menuToggle">
+		<button title="Menu" class="header-wrap__menu-button" @click="menuToggle">
 		</button>
 	</header>
 </template>
