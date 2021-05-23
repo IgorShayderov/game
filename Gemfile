@@ -31,12 +31,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # from ruby 3.0.0 rexml gem is not included by default
 gem 'rexml'
 
+# Template engine
+gem 'slim-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
-  end
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
 
