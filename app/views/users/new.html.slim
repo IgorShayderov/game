@@ -1,0 +1,24 @@
+div class="user-registration"
+  header
+    h1 class="user-registration-header__title"
+      | New user registration
+    p class="user-registration-header__description"
+      | *Asterisk marked field are required
+
+  = form_with model: @user, class: "form" do |form|
+    = form.label :login, class: "label_required"
+    = form.text_field :login
+
+    = form.label :email, class: "label_required"
+    = form.text_field :email
+
+    = form.label :name
+    = form.text_field :name
+
+    = form.label :password, class: "label_required"
+    = form.text_field :password
+
+    = form.label :password_confirmation, class: "label_required"
+    = form.text_field :password_confirmation
+
+    = form.submit "Create new user"
