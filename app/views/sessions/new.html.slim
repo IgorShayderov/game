@@ -1,0 +1,15 @@
+main class="signin-page"
+  h1 class="signin-page__title"
+    | Sign up page
+
+  section
+    = form_with url: sessions_path, class: "form", local: true do |form|
+      = form.label :login
+      = form.text_field :login
+
+      = form.label :password
+      = form.password_field :password
+
+      = form.submit "Enter"
+
+    = link_to "Sign up page", sign_up_path

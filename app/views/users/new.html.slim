@@ -1,4 +1,4 @@
-div class="user-registration"
+main class="user-registration"
   header
     h1 class="user-registration-header__title"
       | New user registration
@@ -10,15 +10,17 @@ div class="user-registration"
     = form.text_field :login
 
     = form.label :email, class: "label_required"
-    = form.text_field :email
+    = form.email_field :email
 
     = form.label :name
     = form.text_field :name
 
     = form.label :password, class: "label_required"
-    = form.text_field :password
+    = form.password_field :password
 
     = form.label :password_confirmation, class: "label_required"
-    = form.text_field :password_confirmation
+    = form.password_field :password_confirmation
 
     = form.submit "Create new user"
+
+  = link_to "Back to sign in", sign_in_path
