@@ -6,10 +6,24 @@
   margin: 0 1rem;
 }
 
-.user-registration-header__title {
-  text-align: center;
-}
-
 .user-registration-header__description {
   font-style: italic;
+}
+
+.user-profile {
+  padding: 0 1rem;
+  // background-image: url('menu/character.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 70%;
+  height: 100vh;
+}
+
+.user-profile-info {
+  padding-left: 0;
+}
+
+.user-profile-info__item {
+  list-style-type: none;
+  margin: 5px 0;
 }
