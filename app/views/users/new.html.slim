@@ -8,11 +8,6 @@ main class="user-registration"
   = render 'shared/errors', resource: @user
 
   = form_with model: @user, class: "form" do |form|
-
-    ' Errors
-    = @user.errors.count
-    br
-
     = form.label :login, class: "label_required"
     = form.text_field :login
 
