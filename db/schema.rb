@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_163131) do
+ActiveRecord::Schema.define(version: 2021_10_02_230935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "item_type", default: "common"
+    t.text "description", default: ""
+    t.string "type", null: false
+    t.integer "damage", default: 0
+    t.integer "armor", default: 0
+    t.integer "hitpoints", default: 0
+    t.integer "price", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "login", limit: 30, null: false
