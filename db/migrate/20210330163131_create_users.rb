@@ -1,16 +1,13 @@
 class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
-      t.string :login, limit: 30, null: false
-      t.string :password_digest, null: false
-      t.string :name, limit: 30, default: ''
-      t.string :email, limit: 40, null: false
-      t.boolean :is_admin, default: false
+      t.string :email, null: false, comment: 'Email пользователя'
+      t.string :phone, default: '', comment: 'Телефон пользователя'
+      t.string :name, null: false, comment: 'Имя пользователя'
+      t.string :password_digest, null: false, comment: 'Пароль'
+      t.integer :role, default: 0, comment: 'Роль пользователя'
 
       t.timestamps
     end
-
-    add_index :users, :login, unique: true
-    add_index :users, :email
   end
 end
