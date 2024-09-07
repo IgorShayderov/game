@@ -1,0 +1,46 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+require:
+  - rubocop-performance
+
+inherit_from:
+  - .rubocop/rubocop_rails.yml
+  - .rubocop/rubocop_rspec.yml
+
+Performance:
+  Enabled: true
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.2.2
+  Exclude:
+    - 'bin/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne: [ 'array', 'heredoc', 'hash' ]
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/BlockLength:
+  Max: 35
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*_spec.rb'
+    - 'config/environments/**/*'
+    - 'config/routes.rb'
+    - 'config/routes/**/*'
+
+Metrics/ClassLength:
+  Max: 200
