@@ -7,6 +7,7 @@ class Effect < ApplicationRecord
     damage: 0,
     armour: 1,
     crittical_chance: 2,
-    health: 3
+    crittical_damage: 3,
+    health: 4
   }
 end
