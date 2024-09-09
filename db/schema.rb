@@ -82,10 +82,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_07_220919) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", limit: 60, null: false, comment: "Email пользователя"
-    t.string "phone", limit: 20, default: "", comment: "Телефон пользователя"
-    t.string "name", limit: 30, null: false, comment: "Имя пользователя"
-    t.string "password_digest", null: false, comment: "Пароль"
+    t.string "email", null: false, comment: "Email пользователя"
+    t.string "phone", default: "", comment: "Телефон пользователя"
+    t.string "name", null: false, comment: "Имя пользователя"
+    t.string "password_digest", comment: "Пароль"
     t.integer "role", default: 0, comment: "Роль пользователя"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,6 +8,8 @@ class User < ApplicationRecord
     admin: 1
   }
 
-  validates :login, :password_digest, :email, presence: true
+  has_secure_password
+
+  validates :login, :email, presence: true
   validates :email, uniqueness: true
 end
