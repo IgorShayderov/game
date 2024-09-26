@@ -59,17 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_07_220919) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
-  create_table "item_effects", force: :cascade do |t|
-    t.bigint "items_id", null: false, comment: "Связь с предметом"
-    t.bigint "effects_id", null: false, comment: "Связь с эффектом"
-    t.integer "count", default: 0, comment: "Количество единиц эффекта"
-    t.string "duration", default: "0", comment: "Длительность эффекта, где 0 - постоянный"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["effects_id"], name: "index_item_effects_on_effects_id"
-    t.index ["items_id"], name: "index_item_effects_on_items_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "name", null: false, comment: "Наименование предмета"
     t.text "description", default: "", comment: "Описание предмета"
@@ -79,6 +68,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_07_220919) do
     t.integer "appliance", default: 0, comment: "Применимость предмета (поглощаемый, временный, постоянный и тд)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items_effects", force: :cascade do |t|
+    t.bigint "item_id", null: false, comment: "Связь с предметом"
+    t.bigint "effect_id", null: false, comment: "Связь с эффектом"
+    t.integer "count", default: 0, comment: "Количество единиц эффекта"
+    t.string "duration", default: "0", comment: "Длительность эффекта, где 0 - постоянный"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_id"], name: "index_items_effects_on_effect_id"
+    t.index ["item_id"], name: "index_items_effects_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_07_220919) do
 
   add_foreign_key "character_attributes", "attributes", column: "attributes_id"
   add_foreign_key "character_attributes", "characters", column: "characters_id"
-  add_foreign_key "item_effects", "effects", column: "effects_id"
-  add_foreign_key "item_effects", "items", column: "items_id"
+  add_foreign_key "items_effects", "effects"
+  add_foreign_key "items_effects", "items"
 end

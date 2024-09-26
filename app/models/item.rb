@@ -17,7 +17,8 @@ class Item < ApplicationRecord
   }
 
   has_many :item_effects
+  has_many :effects, through: :item_effects
   has_many :images, as: :imageable
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

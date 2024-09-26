@@ -29,6 +29,7 @@ gem 'slim-rails'
 gem 'jwt_sessions'
 gem 'strong_migrations'
 gem 'pundit'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,6 +43,10 @@ group :development do
   gem 'faker'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :test do
