@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SessionsController < Api::V1::BaseController
+    class SessionsController < Api::BaseController
       skip_before_action :authorize_access_request!, only: %i[create update]
 
       def create
