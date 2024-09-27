@@ -1,13 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 User.find_or_create_by({
-  email: 'test@test.com',
+  email: 'flashmob123@gmail.com',
 }) do |user|
   user.name = 'Admin'
   user.phone = '+79991663333'
@@ -43,19 +35,19 @@ axe_of_executioner = Item.find_or_create_by({
   item.item_kind = :weapon
 end
 
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: axe_of_executioner,
   effect: increase_damage_effect,
 }) do |effect|
   effect.count = 75
 end
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: axe_of_executioner,
   effect: increase_crittical_chance,
 }) do |effect|
   effect.count = 10
 end
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: axe_of_executioner,
   effect: increase_health,
 }) do |effect|
@@ -72,19 +64,19 @@ makarov_pistol = Item.find_or_create_by({
   item.item_kind = :weapon
 end
 
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: makarov_pistol,
   effect: increase_damage_effect,
 }) do |effect|
   effect.count = 50
 end
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: makarov_pistol,
   effect: increase_crittical_chance,
 }) do |effect|
   effect.count = 15
 end
-ItemEffect.find_or_create_by({
+ItemsEffect.find_or_create_by({
   item: makarov_pistol,
   effect: increase_crttical_damage,
 }) do |effect|

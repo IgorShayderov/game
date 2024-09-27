@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
         resources :sessions, only: %i[create]
 
-        get :sign_in, to: 'sessions#create'
+        post :sign_in, to: 'sessions#create'
         delete :sign_out, to: 'sessions#destroy'
     end
   end
