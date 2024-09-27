@@ -15,6 +15,12 @@ class Item < ApplicationRecord
     sub_weapon: 1,
     armour: 2
   }
+  enum grade: {
+    common: 0,
+    rare: 1,
+    epic: 2,
+    legendary: 3
+  }
 
   has_many :item_effects
   has_many :effects, through: :item_effects
