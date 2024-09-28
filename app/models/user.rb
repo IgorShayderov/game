@@ -14,7 +14,7 @@ class User < ApplicationRecord
   PASSWORD_FORMAT = /\A(?=.*[#{SPECIAL_SYMBOLS.join}])(?=.*[A-Z]).+\z/
   PASSWORD_LENGTH_RANGE = 10..30
 
-  validates :name, :email, presence: true
+  validates :name, :email, :password_digest, presence: true
   validates :email, uniqueness: true
   validates :password, length: PASSWORD_LENGTH_RANGE, format: { with: PASSWORD_FORMAT }, presence: true, if: :password_digest_changed?
 end
