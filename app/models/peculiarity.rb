@@ -1,5 +1,5 @@
-class Attribute < ApplicationRecord
-  enum attribute_type: {
+class Peculiarity < ApplicationRecord
+  enum kind: {
     strength: 0,
     agility: 1,
     intelligence: 2,

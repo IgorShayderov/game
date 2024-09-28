@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe ItemEffect, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ItemsEffect, type: :model do
+  describe 'associations' do
+    it { should belong_to(:item) }
+    it { should belong_to(:effect) }
+  end
 end

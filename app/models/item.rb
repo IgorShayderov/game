@@ -15,15 +15,15 @@ class Item < ApplicationRecord
     sub_weapon: 1,
     armour: 2
   }
-  enum grade: {
+  enum tier: {
     common: 0,
     rare: 1,
     epic: 2,
     legendary: 3
-  }
+  }, _suffix: true
 
-  has_many :item_effects
-  has_many :effects, through: :item_effects
+  has_many :items_effects
+  has_many :effects, through: :items_effects
   has_many :images, as: :imageable
 
   validates :name, presence: true, uniqueness: true
