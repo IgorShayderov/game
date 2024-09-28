@@ -30,6 +30,10 @@ module Api
         session.flush_by_access_payload
         head :ok
       end
+
+      def current_user
+        render json: UserSerializer.render(current_user, :main)
+      end
     end
   end
 end

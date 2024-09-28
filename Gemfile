@@ -25,6 +25,8 @@ gem 'rexml'
 
 # Template engine
 gem 'slim-rails'
+gem 'blueprinter'
+gem 'oj'
 
 gem 'jwt_sessions'
 gem 'strong_migrations'
