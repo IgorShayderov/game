@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Peculiarity < ApplicationRecord
   enum kind: {
     strength: 0,

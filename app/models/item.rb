@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 class Item < ApplicationRecord
   enum item_type: {
     common: 0,

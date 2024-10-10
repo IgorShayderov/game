@@ -4,11 +4,11 @@ Rails.application.routes.draw do
       resources :users, only: %i[show create update]
       resources :items, only: %i[show create update]
 
-      resources :sessions, only: %i[create]
+      resources :sessions, only: %i[update]
 
       post :sign_in, to: 'sessions#create'
       delete :sign_out, to: 'sessions#destroy'
-      get :current_user, to: 'sessions#current_user'
+      get :current_user, to: 'sessions#me'
     end
   end
 end

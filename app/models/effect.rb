@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Effect < ApplicationRecord
   enum effect_type: {
     increase: 0,

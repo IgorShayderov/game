@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class SessionsController < Api::BaseController
@@ -31,8 +33,8 @@ module Api
         head :ok
       end
 
-      def current_user
-        render json: UserSerializer.render(current_user, :main)
+      def me
+        render json: UserSerializer.render(current_user, view: :main)
       end
     end
   end
